@@ -105,7 +105,7 @@ function updateFormLinks() {
     // INSTRUÇÕES: Atualize estes valores com suas URLs reais
     
     const GOOGLE_FORMS_SATURDAY = 'https://forms.gle/seu-formulario-aqui'; // Altere com sua URL
-    const WHATSAPP_NUMBER = '5521999999999'; // Altere com seu número
+    const WHATSAPP_NUMBER = '21990234090'; // Altere com seu número
     
     // Atualizar todos os links do Google Forms
     document.querySelectorAll('a[href*="forms.gle"]').forEach(link => {
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', updateFormLinks);
 /**
  * FUNÇÃO AUXILIAR - Gerar link dinâmico de WhatsApp com mensagem pré-configurada
  */
-function generateWhatsAppLink(roteiro, number = '5521999999999') {
+function generateWhatsAppLink(roteiro, number = '21990234090') {
     const message = `Olá Rio Clássica! Gostaria de solicitar um roteiro privativo - ${roteiro}`;
     return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
 }
