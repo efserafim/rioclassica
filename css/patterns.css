@@ -1,0 +1,266 @@
+/* ============================================
+   PADRÕES GEOMÉTRICOS - AZULEJOS PORTUGUESES
+   ============================================
+   
+   Arquivo opcional com CSS avançado para adicionar
+   padrões de azulejos portugueses ao site.
+   
+   COMO USAR:
+   1. Descomente as classes que desejar
+   2. Adicione a classe ao elemento HTML
+   3. Customize as cores e dimensões
+   
+   Exemplo: <div class="pattern-tile-1"></div>
+*/
+
+/* ============================================
+   PADRÃO 1: Geométrico Simples
+   ============================================ */
+
+.pattern-tile-1 {
+    background-image: 
+        linear-gradient(45deg, #d4af37 25%, transparent 25%),
+        linear-gradient(-45deg, #d4af37 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #d4af37 75%),
+        linear-gradient(-45deg, transparent 75%, #d4af37 75%);
+    background-size: 40px 40px;
+    background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+    background-color: #0a2540;
+}
+
+/* ============================================
+   PADRÃO 2: Xadrez Clássico
+   ============================================ */
+
+.pattern-tile-2 {
+    background-image:
+        linear-gradient(90deg, #d4af37 2px, transparent 2px),
+        linear-gradient(0deg, #d4af37 2px, transparent 2px);
+    background-size: 30px 30px;
+    background-color: #f8f6f1;
+}
+
+/* ============================================
+   PADRÃO 3: Flores Abstratas
+   ============================================ */
+
+.pattern-tile-3 {
+    background-image: 
+        radial-gradient(circle, #d4af37 2px, transparent 2px),
+        radial-gradient(circle, #d4af37 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
+    background-color: #0a2540;
+}
+
+/* ============================================
+   PADRÃO 4: Linhas Onduladas
+   ============================================ */
+
+.pattern-tile-4 {
+    background-image: 
+        linear-gradient(0deg, transparent 24%, rgba(212, 175, 55, 0.5) 25%, rgba(212, 175, 55, 0.5) 26%, transparent 27%, transparent 74%, rgba(212, 175, 55, 0.5) 75%, rgba(212, 175, 55, 0.5) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(212, 175, 55, 0.5) 25%, rgba(212, 175, 55, 0.5) 26%, transparent 27%, transparent 74%, rgba(212, 175, 55, 0.5) 75%, rgba(212, 175, 55, 0.5) 76%, transparent 77%, transparent);
+    background-size: 50px 50px;
+    background-color: #f8f6f1;
+}
+
+/* ============================================
+   PADRÃO 5: Espiral Hipnótica
+   ============================================ */
+
+.pattern-tile-5 {
+    background-image: 
+        repeating-linear-gradient(0deg, #d4af37 0, #d4af37 1px, transparent 1px, transparent 10px),
+        repeating-linear-gradient(90deg, #d4af37 0, #d4af37 1px, transparent 1px, transparent 10px),
+        repeating-linear-gradient(45deg, transparent 0, transparent 8px, #d4af37 8px, #d4af37 9px);
+    background-size: 20px 20px, 20px 20px, 28px 28px;
+    background-position: 0 0, 0 0, 0 0;
+    background-color: #0a2540;
+}
+
+/* ============================================
+   PADRÃO 6: Mandala Portuguesa
+   ============================================ */
+
+.pattern-tile-6 {
+    background: 
+        radial-gradient(circle at 20% 50%, #d4af37 20%, transparent 20%),
+        radial-gradient(circle at 60% 0%, #d4af37 20%, transparent 20%),
+        radial-gradient(circle at 80% 50%, #d4af37 20%, transparent 20%),
+        radial-gradient(circle at 60% 100%, #d4af37 20%, transparent 20%),
+        radial-gradient(circle at 50% 50%, #0a2540 20%, transparent 20%);
+    background-size: 100px 100px;
+    background-position: 0 0;
+    background-color: #f8f6f1;
+}
+
+/* ============================================
+   PADRÃO 7: Azulejos Texturizados
+   ============================================ */
+
+.pattern-tile-7 {
+    background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(212, 175, 55, 0.1) 10px, rgba(212, 175, 55, 0.1) 20px),
+        repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(212, 175, 55, 0.1) 10px, rgba(212, 175, 55, 0.1) 20px);
+    background-size: 100% 100%;
+    background-color: #0a2540;
+}
+
+/* ============================================
+   PADRÃO 8: Gradiente Radial
+   ============================================ */
+
+.pattern-tile-8 {
+    background: 
+        radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(212, 175, 55, 0.3) 0%, transparent 50%);
+    background-size: 100px 100px;
+    background-color: #f8f6f1;
+}
+
+/* ============================================
+   APLICAÇÕES PRÁTICAS
+   ============================================ */
+
+/* Usar como overlay no hero */
+.hero-with-pattern {
+    position: relative;
+}
+
+.hero-with-pattern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Usar como divisor entre seções */
+.divider-pattern {
+    height: 40px;
+    background-image: 
+        repeating-linear-gradient(90deg, #d4af37 0, #d4af37 2px, transparent 2px, transparent 20px);
+    background-size: 100%;
+    background-position: center;
+}
+
+/* Usar como borda decorativa */
+.border-pattern {
+    position: relative;
+    border: none;
+    border-top: 3px solid #d4af37;
+    border-bottom: 3px solid #d4af37;
+    box-shadow: 
+        inset 0 4px 0 rgba(212, 175, 55, 0.2),
+        inset 0 -4px 0 rgba(212, 175, 55, 0.2);
+}
+
+/* Usar como fundo de card premium */
+.card-pattern-background {
+    background-color: #f8f6f1;
+    background-image: 
+        repeating-linear-gradient(90deg, transparent 0, transparent 4px, #d4af37 4px, #d4af37 5px),
+        repeating-linear-gradient(0deg, transparent 0, transparent 4px, #d4af37 4px, #d4af37 5px);
+    background-size: 20px 20px;
+}
+
+/* ============================================
+   ANIMAÇÃO DE PADRÕES
+   ============================================ */
+
+@keyframes slide-pattern {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 40px 40px;
+    }
+}
+
+.pattern-animated {
+    animation: slide-pattern 8s linear infinite;
+}
+
+@keyframes rotate-pattern {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.pattern-rotate {
+    animation: rotate-pattern 20s linear infinite;
+}
+
+/* ============================================
+   RESPONSIVIDADE DE PADRÕES
+   ============================================ */
+
+@media (max-width: 768px) {
+    .pattern-tile-1,
+    .pattern-tile-2,
+    .pattern-tile-3,
+    .pattern-tile-4,
+    .pattern-tile-5,
+    .pattern-tile-6,
+    .pattern-tile-7,
+    .pattern-tile-8 {
+        background-size: 20px 20px !important;
+    }
+
+    .divider-pattern {
+        height: 20px;
+    }
+}
+
+/* ============================================
+   EXEMPLOS DE COMBINAÇÕES
+   ============================================ */
+
+/* Combinação 1: Premium Elegante */
+.premium-elegant {
+    background-color: #0a2540;
+    background-image: 
+        linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+        repeating-linear-gradient(90deg, transparent 0, transparent 1px, rgba(212, 175, 55, 0.05) 1px, rgba(212, 175, 55, 0.05) 2px);
+    background-size: 100px 100px, 20px 20px;
+}
+
+/* Combinação 2: Clássico Português */
+.classic-portuguese {
+    background-color: #f8f6f1;
+    background-image: 
+        repeating-linear-gradient(0deg, #d4af37 0, #d4af37 1px, transparent 1px, transparent 10px),
+        repeating-linear-gradient(90deg, #d4af37 0, #d4af37 1px, transparent 1px, transparent 10px);
+    background-size: 20px 20px;
+}
+
+/* Combinação 3: Moderno Minimalista */
+.modern-minimal {
+    background-color: #0a2540;
+    background-image: 
+        repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(212, 175, 55, 0.08) 20px, rgba(212, 175, 55, 0.08) 40px);
+}
+
+/* ============================================
+   SUPORTE A FALLBACK (navegadores antigos)
+   ============================================ */
+
+.pattern-tile-fallback {
+    background-color: #0a2540;
+    background-image: linear-gradient(135deg, #d4af37 25%, transparent 25%, transparent 75%, #d4af37 75%, #d4af37);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+}
+
+/* ============================================
+   FIM - Padrões Geométricos
+   ============================================ */
