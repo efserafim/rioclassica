@@ -41,14 +41,17 @@
     return label;
   }
 
+  let lastFeaturedSabado = null;
+
   function renderSaturdayCard(sabado) {
     const mount = document.getElementById('featured-saturday-mount');
     const explanationEl = document.getElementById('saturday-explanation-mount');
     if (!mount) return;
 
+    if (sabado) lastFeaturedSabado = sabado;
+
     if (!sabado) {
-      mount.innerHTML =
-        '<p style="text-align:center;color:#6d5a47;padding:2rem;">Carregando conteúdo…</p>';
+      mount.innerHTML = `<p style="text-align:center;color:#6d5a47;padding:2rem;">${escapeHtml(typeof t === 'function' ? t('ui.loading') : 'Carregando conteúdo…')}</p>`;
       if (explanationEl) explanationEl.hidden = true;
       return;
     }
@@ -77,7 +80,7 @@
             <span class="detail-item">👥 ${escapeHtml(sabado.maxPeople || 'Máx. 12 pessoas')}</span>
           </div>
           <div class="saturday-actions">
-            <button type="button" class="btn btn-outline saturday-details-btn">Ver detalhes</button>
+            <button type="button" class="btn btn-outline saturday-details-btn">${escapeHtml(typeof t === 'function' ? t('ui.viewDetails') : 'Ver detalhes')}</button>
             <a href="${escapeAttr(ctaHref)}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-large saturday-cta-btn">
               ${escapeHtml(ctaLabel)}
             </a>
@@ -364,6 +367,10 @@
     initRoteiroDetailModal();
     initSaturdayDetailModal();
   };
+
+  window.addEventListener('langchange', () => {
+    if (lastFeaturedSabado) renderSaturdayCard(lastFeaturedSabado);
+  });
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);

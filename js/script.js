@@ -22,13 +22,18 @@ if (menuToggle) {
     });
 }
 
+function closeMobileNav() {
+    if (!navLinks || !menuToggle) return;
+    mobileMenuOpen = false;
+    navLinks.classList.remove('visible');
+    menuToggle.textContent = '☰';
+}
+
+window.closeMobileNav = closeMobileNav;
+
 // Fechar menu ao clicar em um link
 document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', function() {
-        mobileMenuOpen = false;
-        navLinks.classList.remove('visible');
-        menuToggle.textContent = '☰';
-    });
+    link.addEventListener('click', closeMobileNav);
 });
 
 /**
