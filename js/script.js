@@ -112,8 +112,9 @@ function updateFormLinks() {
         link.href = GOOGLE_FORMS_SATURDAY;
     });
     
-    // Atualizar todos os links do WhatsApp
+    // Atualizar links do WhatsApp (exceto o card dinâmico do dashboard)
     document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+        if (link.closest('#featured-saturday-mount')) return;
         const whatsappUrl = link.getAttribute('href');
         const message = whatsappUrl.split('?text=')[1];
         link.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${message || 'Olá Rio Clássica!'}`;

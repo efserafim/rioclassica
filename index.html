@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Rio Clássica - Roteiros Culturais Exclusivos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=7">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>RC</text></svg>">
 </head>
 <body>
-    <!-- HEADER MODERNO E ELEGANTE -->
+    <!-- HEADER  -->
     <header class="header">
         <nav class="navbar">
             <div class="nav-container">
@@ -94,32 +98,8 @@
             <h2 class="section-title" id="saturdays-title">Experiências de Sábado</h2>
             <p class="section-subtitle" id="saturdays-subtitle">Roteiros abertos | Vagas limitadas para garantir profundidade</p>
             
-            <div class="featured-saturday">
-                <div class="saturday-card featured">
-                    <img src="assets/image/Paço_Imperial_-_Rio_de_Janeiro_-_20220826172010.jpg" alt="Paço Imperial - Rio de Janeiro" class="saturday-image-placeholder">
-                    <div class="saturday-content">
-                        <span class="badge" id="badge-next">EVENTO SURPRESA</span>
-                        <h3 id="saturday-title">Qual será o tema deste Sábado?</h3>
-                        <p class="saturday-description" id="saturday-desc">
-                            A cada semana, Rio Clássica revela um novo tema: desde o Centro do Rio Imperial até confeitarias históricas da belle époque, igrejas barrocas ou encontros literários. Descubra qual será a próxima experiência!</p>
-                        </p>
-                        <div class="saturday-details">
-                            <span class="detail-item" id="saturday-duration">⏱️ Aproximadamente 3h30min</span>
-                            <span class="detail-item" id="saturday-languages">🌍 PT / EN / ES / FR</span>
-                            <span class="detail-item" id="saturday-max-people">👥 Máx. 12 pessoas</span>
-                        </div>
-                        <!-- BOTÃO WHATSAPP: Mensagem para conhecer o evento do sábado -->
-                        <a href="https://wa.me/21990234090?text=Olá%20Rio%20Clássica!%20Gostaria%20de%20saber%20qual%20é%20o%20tema%20da%20Experiência%20de%20Sábado%20da%20próxima%20semana." target="_blank" class="btn btn-secondary btn-large" id="saturday-btn">
-                            Descubra o Tema no WhatsApp
-                        </a>
-                        <p class="saturday-note" id="saturday-note">*Vagas estritamente limitadas - Confirme sua participação via WhatsApp</p>
-                    </div>
-                </div>
-            </div>
-
-            <p class="saturday-explanation" id="saturday-explanation">
-                Cada sábado é uma surpresa! Rio Clássica revela um roteiro inédito selecionado para proporcionar uma experiência única e memorável. De igrejas barrocas até confeitarias da belle époque, passando por clássicos da literatura carioca — experiências que mudam semanalmente e que garantem exclusividade e profundidade em cada imersão na história do Rio.
-            </p>
+            <div class="featured-saturday" id="featured-saturday-mount" aria-live="polite"></div>
+            <p class="saturday-explanation" id="saturday-explanation-mount" hidden></p>
         </div>
     </section>
 
@@ -136,17 +116,17 @@
                     <div class="roteiro-body">
                         <h3 class="roteiro-title" id="card-a-title">Tour pelas Igrejas Históricas</h3>
                         <p class="roteiro-subtitle" id="card-a-subtitle">Fé, Arquitetura Barroca e Colonial</p>
-                        <p class="roteiro-description" id="card-a-desc">
+                        <p class="roteiro-description roteiro-description--preview" id="card-a-desc">
                             Caminhada através dos templos que definiram a paisagem espiritual do Rio. Inclui a Basílica da Candelária, Igreja de São Francisco da Penitência e suas gemas arquitetônicas escondidas.
                         </p>
                         <div class="roteiro-meta">
                             <span class="meta-item" id="duration">⏱️ 3h a 4h</span>
                             <span class="meta-item" id="languages">🌍 PT / EN / ES / FR</span>
                         </div>
-                        <!-- WHATSAPP DINÂMICO: Atualize o número conforme necessário -->
-                        <a href="https://wa.me/21990234090?text=Olá%20Rio%20Clássica!%20Gostaria%20de%20solicitar%20um%20roteiro%20privativo%20-%20Tour%20pelas%20Igrejas%20Históricas" target="_blank" class="btn btn-accent" id="request-btn">
-                            Solicitar Roteiro Privativo
-                        </a>
+                        <div class="roteiro-actions">
+                            <button type="button" class="btn btn-outline roteiro-details-btn">Ver detalhes</button>
+                            <a href="https://wa.me/21990234090?text=Olá%20Rio%20Clássica!%20Gostaria%20de%20solicitar%20um%20roteiro%20privativo%20-%20Tour%20pelas%20Igrejas%20Históricas" target="_blank" rel="noopener noreferrer" class="btn btn-accent" id="request-btn">Reservar agora</a>
+                        </div>
                     </div>
                 </div>
 
@@ -156,16 +136,17 @@
                     <div class="roteiro-body">
                         <h3 class="roteiro-title" id="card-b-title">Centro do Rio Imperial</h3>
                         <p class="roteiro-subtitle" id="card-b-subtitle">Uma Viagem no Tempo pela Corte</p>
-                        <p class="roteiro-description" id="card-b-desc">
+                        <p class="roteiro-description roteiro-description--preview" id="card-b-desc">
                             Praça XV, Paço Imperial e as intrigas políticas que moldaram a história. Compreenda os trâmites administrativos e as estratégias que construíram a identidade carioca.
                         </p>
                         <div class="roteiro-meta">
-                            <span class="meta-item">⏱️ 3h a 4h</span>
-                            <span class="meta-item">🌍 PT / EN / ES / FR</span>
+                            <span class="meta-item" id="b-duration">⏱️ 3h a 4h</span>
+                            <span class="meta-item" id="b-languages">🌍 PT / EN / ES / FR</span>
                         </div>
-                        <a href="https://wa.me/21990234090?text=Olá%20Rio%20Clássica!%20Gostaria%20de%20solicitar%20um%20roteiro%20privativo%20-%20Centro%20do%20Rio%20Imperial" target="_blank" class="btn btn-accent">
-                            Solicitar Roteiro Privativo
-                        </a>
+                        <div class="roteiro-actions">
+                            <button type="button" class="btn btn-outline roteiro-details-btn">Ver detalhes</button>
+                            <a href="https://wa.me/21990234090?text=Olá%20Rio%20Clássica!%20Gostaria%20de%20solicitar%20um%20roteiro%20privativo%20-%20Centro%20do%20Rio%20Imperial" target="_blank" rel="noopener noreferrer" class="btn btn-accent" id="request-btn-b">Reservar agora</a>
+                        </div>
                     </div>
                 </div>
 
@@ -175,16 +156,17 @@
                     <div class="roteiro-body">
                         <h3 class="roteiro-title" id="card-c-title">Confeitarias Históricas do Rio</h3>
                         <p class="roteiro-subtitle" id="card-c-subtitle">A Sofisticação da Belle Époque</p>
-                        <p class="roteiro-description" id="card-c-desc">
+                        <p class="roteiro-description roteiro-description--preview" id="card-c-desc">
                             Degustação e história através da Confeitaria Colombo, Casa Cavé, Manon e outras joias da tradição carioca. Uma experiência sensorial que conecta passado e presente.
                         </p>
                         <div class="roteiro-meta">
-                            <span class="meta-item">⏱️ 3h a 4h</span>
-                            <span class="meta-item">🌍 PT / EN / ES / FR</span>
+                            <span class="meta-item" id="c-duration">⏱️ 3h a 4h</span>
+                            <span class="meta-item" id="c-languages">🌍 PT / EN / ES / FR</span>
                         </div>
-                        <a href="https://wa.me/21990234090?text=Olá%20Rio%20Clássica!%20Gostaria%20de%20solicitar%20um%20roteiro%20privativo%20-%20Confeitarias%20Históricas" target="_blank" class="btn btn-accent">
-                            Solicitar Roteiro Privativo
-                        </a>
+                        <div class="roteiro-actions">
+                            <button type="button" class="btn btn-outline roteiro-details-btn">Ver detalhes</button>
+                            <a href="https://wa.me/21990234090?text=Olá%20Rio%20Clássica!%20Gostaria%20de%20solicitar%20um%20roteiro%20privativo%20-%20Confeitarias%20Históricas" target="_blank" rel="noopener noreferrer" class="btn btn-accent" id="request-btn-c">Reservar agora</a>
+                        </div>
                     </div>
                 </div>
 
@@ -194,16 +176,17 @@
                     <div class="roteiro-body">
                         <h3 class="roteiro-title" id="card-d-title">Encontro Literário</h3>
                         <p class="roteiro-subtitle" id="card-d-subtitle">Machado de Assis e Contexto Histórico</p>
-                        <p class="roteiro-description" id="card-d-desc">
+                        <p class="roteiro-description roteiro-description--preview" id="card-d-desc">
                             Imersão nos contos clássicos como "A Cartomante" e "Missa do Galo". Uma fusão de leitura dramatizada, análise contextual e caminhada pelos espaços que inspiraram os textos.
                         </p>
                         <div class="roteiro-meta">
-                            <span class="meta-item">⏱️ 3h a 4h</span>
-                            <span class="meta-item">🌍 PT / EN / ES / FR</span>
+                            <span class="meta-item" id="d-duration">⏱️ 3h a 4h</span>
+                            <span class="meta-item" id="d-languages">🌍 PT / EN / ES / FR</span>
                         </div>
-                        <a href="https://wa.me/21990234090?text=Olá%20Rio%20Clássica!%20Gostaria%20de%20solicitar%20um%20roteiro%20privativo%20-%20Encontro%20Literário" target="_blank" class="btn btn-accent">
-                            Solicitar Roteiro Privativo
-                        </a>
+                        <div class="roteiro-actions">
+                            <button type="button" class="btn btn-outline roteiro-details-btn">Ver detalhes</button>
+                            <a href="https://wa.me/21990234090?text=Olá%20Rio%20Clássica!%20Gostaria%20de%20solicitar%20um%20roteiro%20privativo%20-%20Encontro%20Literário" target="_blank" rel="noopener noreferrer" class="btn btn-accent" id="request-btn-d">Reservar agora</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -280,6 +263,35 @@
         </div>
     </footer>
 
+    <!-- Modal: detalhes da Experiência de Sábado -->
+    <div class="roteiro-modal" id="saturday-detail-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="saturday-modal-title">
+        <div class="roteiro-modal-backdrop" data-saturday-modal-close></div>
+        <div class="roteiro-modal-panel">
+            <button type="button" class="roteiro-modal-close" data-saturday-modal-close aria-label="Fechar">×</button>
+            <img class="roteiro-modal-image" id="saturday-modal-image" alt="" hidden>
+            <span class="badge roteiro-modal-badge" id="saturday-modal-badge"></span>
+            <h3 class="roteiro-modal-title" id="saturday-modal-title"></h3>
+            <div class="roteiro-modal-meta" id="saturday-modal-meta"></div>
+            <div class="roteiro-modal-description" id="saturday-modal-description"></div>
+            <p class="saturday-modal-note" id="saturday-modal-note"></p>
+            <a href="#" class="btn btn-secondary btn-large" id="saturday-modal-cta" target="_blank" rel="noopener noreferrer">Reservar agora</a>
+        </div>
+    </div>
+
+    <!-- Modal: detalhes do roteiro -->
+    <div class="roteiro-modal" id="roteiro-detail-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="roteiro-modal-title">
+        <div class="roteiro-modal-backdrop" data-roteiro-modal-close></div>
+        <div class="roteiro-modal-panel">
+            <button type="button" class="roteiro-modal-close" data-roteiro-modal-close aria-label="Fechar">×</button>
+            <img class="roteiro-modal-image" id="roteiro-modal-image" alt="" hidden>
+            <p class="roteiro-modal-subtitle" id="roteiro-modal-subtitle"></p>
+            <h3 class="roteiro-modal-title" id="roteiro-modal-title"></h3>
+            <div class="roteiro-modal-meta" id="roteiro-modal-meta"></div>
+            <div class="roteiro-modal-description" id="roteiro-modal-description"></div>
+            <a href="#" class="btn btn-accent btn-large" id="roteiro-modal-reserve" target="_blank" rel="noopener noreferrer">Reservar agora</a>
+        </div>
+    </div>
+
     <!-- WHATSAPP FLUTUANTE -->
     <a href="https://wa.me/21990234090?text=Olá%20Rio%20Clássica!%20Gostaria%20de%20saber%20mais%20sobre%20seus%20roteiros." target="_blank" class="whatsapp-float" id="whatsapp-float" title="Conversar no WhatsApp">
         <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
@@ -287,6 +299,15 @@
         </svg>
     </a>
 
-    <script src="js/script.js"></script>
+    <!-- Supabase (dados do site) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.8/dist/umd/supabase.min.js"></script>
+    <script src="js/config/supabase-config.js"></script>
+    <script src="js/core/mappers.js"></script>
+    <script src="js/core/supabase-errors.js"></script>
+    <script src="js/core/supabase-client.js"></script>
+    <script src="js/services/sabados-service.js"></script>
+    <script src="js/services/roteiros-service.js"></script>
+    <script src="js/site-content.js?v=6"></script>
+    <script src="js/script.js?v=5"></script>
 </body>
 </html>
