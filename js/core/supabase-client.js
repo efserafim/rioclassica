@@ -46,6 +46,20 @@ function aguardarSupabase() {
     let attempts = 0;
     const tick = () => {
       attempts += 1;
+
+      if (
+        !window.supabaseClient &&
+        isSupabaseConfigured() &&
+        typeof initSupabaseClients === 'function' &&
+        window.supabase?.createClient
+      ) {
+        try {
+          initSupabaseClients();
+        } catch (error) {
+          console.warn('[Rio Clássica] Falha ao iniciar Supabase:', error.message);
+        }
+      }
+
       if (window.supabaseClient && isSupabaseConfigured()) {
         resolve(window.supabaseClient);
         return;

@@ -1,6 +1,9 @@
 // Blog — CRUD dos posts (tabela blog_posts)
 
-function getBlogClient() {
+async function getBlogClient() {
+  if (typeof aguardarSupabase === 'function') {
+    return aguardarSupabase();
+  }
   const client = window.supabaseClient;
   if (!client) throw new Error('Cliente Supabase não inicializado');
   return client;
@@ -16,7 +19,8 @@ function blogError(error, fallback) {
 }
 
 async function getBlogPosts(publishedOnly = true) {
-  let query = getBlogClient().from('blog_posts').select('*');
+  const client = await getBlogClient();
+  let query = client.from('blog_posts').select('*');
   if (publishedOnly) query = query.eq('published', true);
   query = query.order('created_at', { ascending: false });
 
@@ -26,7 +30,8 @@ async function getBlogPosts(publishedOnly = true) {
 }
 
 async function getBlogPostById(id) {
-  const { data, error } = await getBlogClient()
+  const client = await getBlogClient();
+  const { data, error } = await client
     .from('blog_posts')
     .select('*')
     .eq('id', id)
@@ -37,7 +42,8 @@ async function getBlogPostById(id) {
 }
 
 async function createBlogPost(postData) {
-  const { data, error } = await getBlogClient()
+  const client = await getBlogClient();
+  const { data, error } = await client
     .from('blog_posts')
     .insert([postData])
     .select()
@@ -48,7 +54,8 @@ async function createBlogPost(postData) {
 }
 
 async function updateBlogPost(id, postData) {
-  const { data, error } = await getBlogClient()
+  const client = await getBlogClient();
+  const { data, error } = await client
     .from('blog_posts')
     .update(postData)
     .eq('id', id)
@@ -60,7 +67,8 @@ async function updateBlogPost(id, postData) {
 }
 
 async function deleteBlogPostFromDb(id) {
-  const { error } = await getBlogClient().from('blog_posts').delete().eq('id', id);
+  const client = await getBlogClient();
+  const { error } = await client.from('blog_posts').delete().eq('id', id);
   if (error) throw blogError(error, 'Erro ao deletar post');
 }
 
