@@ -5,10 +5,10 @@
   const DEFAULT_LANG = 'pt-BR';
 
   const LANG_META = {
-    'pt-BR': { flag: '🇧🇷', code: 'PT' },
-    en: { flag: '🇺🇸', code: 'EN' },
-    es: { flag: '🇪🇸', code: 'ES' },
-    fr: { flag: '🇫🇷', code: 'FR' }
+    'pt-BR': { flagClass: 'fi-br', code: 'PT' },
+    en: { flagClass: 'fi-us', code: 'EN' },
+    es: { flagClass: 'fi-es', code: 'ES' },
+    fr: { flagClass: 'fi-fr', code: 'FR' }
   };
 
   const translations = {
@@ -319,7 +319,10 @@
     const meta = LANG_META[lang] || LANG_META[DEFAULT_LANG];
     const flagEl = document.getElementById('langCurrentFlag');
     const codeEl = document.getElementById('langCurrentCode');
-    if (flagEl) flagEl.textContent = meta.flag;
+    if (flagEl) {
+      flagEl.className = `lang-flag fi ${meta.flagClass}`;
+      flagEl.setAttribute('aria-hidden', 'true');
+    }
     if (codeEl) codeEl.textContent = meta.code;
   }
 

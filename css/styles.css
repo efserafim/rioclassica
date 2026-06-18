@@ -378,8 +378,31 @@ section {
 }
 
 .lang-flag {
-    font-size: 1.2rem;
+    display: inline-block;
+    flex-shrink: 0;
     line-height: 1;
+}
+
+.lang-flag.fi {
+    width: 1.25rem;
+    height: 0.94rem;
+    border-radius: 3px;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+    background-size: cover;
+}
+
+.lang-dropdown-trigger .lang-flag.fi {
+    width: 1.15rem;
+    height: 0.86rem;
+}
+
+.lang-option .lang-flag.fi {
+    width: 1.35rem;
+    height: 1rem;
+}
+
+.lang-option.active .lang-flag.fi {
+    box-shadow: 0 0 0 1px rgba(31, 58, 125, 0.25);
 }
 
 .lang-current-code {
@@ -405,7 +428,7 @@ section {
     position: absolute;
     top: calc(100% + 6px);
     right: 0;
-    min-width: 168px;
+    min-width: 196px;
     margin: 0;
     padding: 6px;
     list-style: none;
@@ -1646,8 +1669,9 @@ section {
         text-align: center;
     }
 
-    .nav-menu-lang .lang-option .lang-flag {
-        font-size: 1.5rem;
+    .nav-menu-lang .lang-option .lang-flag.fi {
+        width: 1.75rem;
+        height: 1.31rem;
     }
 
     .nav-menu-lang .lang-option-text {
