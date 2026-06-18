@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Blog — RIOCLÁSSICA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css?v=1">
+    <!-- Quill.js Editor -->
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.0/dist/quill.snow.css" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>RC</text></svg>">
+</head>
+<body>
+    <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+    <div class="dashboard">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <h2>RIOCLÁSSICA</h2>
+                <span>PAINEL ADMINISTRATIVO</span>
+            </div>
+            <nav>
+                <a href="dashboard.html" class="menu-item" role="button" tabindex="0">
+                    <span aria-hidden="true">📅</span>
+                    <span>EVENTO DE SÁBADO</span>
+                </a>
+                <div class="menu-item active" data-section="blog" role="button" tabindex="0">
+                    <span aria-hidden="true">📝</span>
+                    <span>BLOG</span>
+                </div>
+            </nav>
+            <button type="button" class="logout-btn" id="logoutBtn">SAIR DA CONTA</button>
+        </aside>
+
+        <main class="main-content">
+            <div class="top-bar">
+                <button type="button" class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+            </div>
+
+            <header class="header">
+                <div>
+                    <h1>BLOG</h1>
+                    <p class="header-sub">GERENCIE OS ARTIGOS DO SEU BLOG</p>
+                </div>
+                <div class="user-badge" id="userBadge" hidden>
+                    <span class="user-avatar" id="userAvatar" aria-hidden="true">RC</span>
+                    <span class="user-email-text" id="userEmail"></span>
+                </div>
+            </header>
+
+            <div id="messageContainer"></div>
+
+            <section class="section active" id="blog">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">Gerenciar Posts</h2>
+                        <p class="section-desc">
+                            Crie, edite e publique artigos para seu blog.
+                        </p>
+                    </div>
+                    <button type="button" class="btn-primary" id="newBlogPostBtn">+ Novo Post</button>
+                </div>
+                <div id="blogPostsList"></div>
+            </section>
+        </main>
+    </div>
+
+    <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+    <!-- Modal de Blog Post -->
+    <div class="modal" id="blogPostModal" role="dialog" aria-modal="true" aria-labelledby="blogPostModalTitle">
+        <div class="modal-content modal-large">
+            <div class="modal-header-row">
+                <h2 class="modal-header" id="blogPostModalTitle">Novo Post</h2>
+                <button type="button" class="modal-close" onclick="closeBlogPostModal()" aria-label="Fechar">×</button>
+            </div>
+            <form id="blogPostForm">
+                <div class="form-group">
+                    <label for="blogTitle">Título do Post</label>
+                    <input type="text" id="blogTitle" placeholder="Ex: Uma jornada cultural pela cidade" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="blogExcerpt">Resumo/Excerpt</label>
+                    <textarea id="blogExcerpt" placeholder="Breve resumo do post para listagens..." rows="2"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="blogAuthor">Autor</label>
+                    <input type="text" id="blogAuthor" placeholder="Ex: Rio Clássica">
+                </div>
+
+                <div class="form-group">
+                    <label for="blogFeaturedImageAlt">Texto alternativo da imagem destacada</label>
+                    <input type="text" id="blogFeaturedImageAlt" placeholder="Ex: Paisagem do Rio de Janeiro">
+                </div>
+
+                <div class="form-group">
+                    <label for="blogFeaturedImage">Upload de imagem destacada</label>
+                    <input type="file" class="file-input" id="blogFeaturedImage" accept="image/*">
+                    <label class="file-input-label" for="blogFeaturedImage">Toque para escolher imagem</label>
+                    <img id="blogFeaturedPreview" class="preview-image" alt="Pré-visualização da capa">
+                    <button type="button" class="btn-remove-image" id="blogRemoveFeaturedImage">Remover foto</button>
+                </div>
+
+                <div class="form-group">
+                    <label for="blogEditor">Conteúdo do Post</label>
+                    <div id="blogEditor" class="quill-editor"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="blogPublished">
+                        <input type="checkbox" id="blogPublished" checked>
+                        Publicado
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-save">Salvar Post</button>
+                    <button type="button" class="btn-cancel" onclick="closeBlogPostModal()">Cancelar</button>
+                </div>
+                <div class="loading" id="blogLoading">
+                    <span class="spinner"></span>Salvando...
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.8/dist/umd/supabase.min.js"></script>
+    <script src="../js/config/supabase-config.js"></script>
+    <script src="../js/core/mappers.js"></script>
+    <script src="../js/core/supabase-errors.js"></script>
+    <script src="../js/core/supabase-client.js"></script>
+    <script src="../js/services/storage-service.js"></script>
+    <script src="../js/services/blog-service.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.0/dist/quill.js"></script>
+    <script src="../js/auth/auth.js"></script>
+    <script src="admin-core.js?v=1"></script>
+    <script src="blog-manager.js?v=1"></script>
+    <script src="blog-admin.js?v=2"></script>
+</body>
+</html>

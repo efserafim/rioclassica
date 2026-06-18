@@ -1,0 +1,9 @@
+# Config local (use supabase-config.example.js como base)
+js/config/supabase-config.js
+
+# Sistema / editor
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
