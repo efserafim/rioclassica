@@ -281,20 +281,6 @@ section {
     width: 100%;
 }
 
-.nav-link--gold {
-    color: var(--color-secondary);
-    font-weight: 600;
-}
-
-.nav-link--gold::after {
-    width: 100%;
-    background-color: var(--color-secondary);
-}
-
-.nav-link--current {
-    opacity: 1;
-}
-
 .menu-toggle {
     display: none;
     background: none;
