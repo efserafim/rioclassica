@@ -16,13 +16,44 @@
 
 /* Hero Section */
 .blog-hero {
-  background: linear-gradient(135deg, var(--blog-primary-light) 0%, var(--blog-primary) 100%);
+  background: var(--blog-primary);
   color: var(--blog-white);
   padding: clamp(90px, 18vw, 140px) 20px;
   text-align: center;
   margin-top: 70px;
   position: relative;
   overflow: hidden;
+  min-height: clamp(320px, 45vh, 420px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blog-hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  filter: sepia(0.12) saturate(1.05) brightness(0.92) contrast(1.05);
+  transform: scale(1.02);
+}
+
+.blog-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse 90% 80% at 50% 45%, transparent 0%, rgba(31, 58, 125, 0.45) 55%, rgba(15, 31, 77, 0.72) 100%),
+    linear-gradient(
+      135deg,
+      rgba(46, 79, 161, 0.55) 0%,
+      rgba(31, 58, 125, 0.72) 50%,
+      rgba(15, 31, 77, 0.82) 100%
+    );
+  box-shadow: inset 0 0 100px rgba(15, 31, 77, 0.35);
 }
 
 .blog-hero::before {
@@ -32,10 +63,10 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: 
-    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.08), transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(174, 148, 113, 0.06), transparent 50%),
-    radial-gradient(circle at 40% 0%, rgba(174, 148, 113, 0.03), transparent 60%);
+  z-index: 2;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.06), transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(174, 148, 113, 0.08), transparent 50%);
   pointer-events: none;
 }
 
@@ -46,12 +77,13 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(174, 148, 113, 0.3), transparent);
+  z-index: 3;
+  background: linear-gradient(90deg, transparent, rgba(174, 148, 113, 0.35), transparent);
 }
 
-.blog-hero > * {
+.blog-hero > .container {
   position: relative;
-  z-index: 1;
+  z-index: 4;
 }
 
 .blog-hero h1 {
@@ -60,18 +92,20 @@
   font-weight: 900;
   letter-spacing: -0.02em;
   margin-bottom: 20px;
-  text-shadow: 2px 6px 12px rgba(0, 0, 0, 0.15);
+  color: var(--blog-accent);
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
   animation: fadeInUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
 }
 
 .blog-hero p {
   font-size: clamp(1rem, 2.8vw, 1.25rem);
-  opacity: 0.96;
+  opacity: 0.98;
   max-width: 700px;
   margin: 0 auto;
   line-height: 1.8;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 0.3px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
   animation: fadeInUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
 }
 
