@@ -4,6 +4,20 @@ const POSTS_PER_PAGE = 8;
 
 let allBlogPosts = [];
 let currentPage = 1;
+let blogScrollLockY = 0;
+let blogModalHistoryActive = false;
+
+function lockPageScroll() {
+  blogScrollLockY = window.scrollY || document.documentElement.scrollTop || 0;
+  document.body.style.top = `-${blogScrollLockY}px`;
+  document.body.classList.add('modal-open');
+}
+
+function unlockPageScroll() {
+  document.body.classList.remove('modal-open');
+  document.body.style.top = '';
+  window.scrollTo(0, blogScrollLockY);
+}
 
 function waitForBlogService() {
   return new Promise((resolve) => {
@@ -203,13 +217,33 @@ function openBlogPost(postId) {
   `;
 
   document.getElementById('postModal').classList.add('active');
-  document.body.classList.add('modal-open');
-  window.scrollTo(0, 0);
+  lockPageScroll();
+
+  if (!blogModalHistoryActive) {
+    history.pushState({ blogModal: true }, '');
+    blogModalHistoryActive = true;
+  }
+
+  const modalContent = document.querySelector('.blog-modal-content');
+  if (modalContent) modalContent.scrollTop = 0;
 }
 
-function closeBlogModal() {
-  document.getElementById('postModal').classList.remove('active');
-  document.body.classList.remove('modal-open');
+function closeBlogModal(skipHistoryBack = false) {
+  const modal = document.getElementById('postModal');
+  if (!modal?.classList.contains('active')) return;
+
+  modal.classList.remove('active');
+  unlockPageScroll();
+
+  if (!blogModalHistoryActive) return;
+
+  if (skipHistoryBack) {
+    blogModalHistoryActive = false;
+    return;
+  }
+
+  blogModalHistoryActive = false;
+  history.back();
 }
 
 function escapeHtml(text) {
@@ -229,6 +263,12 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && document.getElementById('postModal')?.classList.contains('active')) {
       closeBlogModal();
+    }
+  });
+
+  window.addEventListener('popstate', () => {
+    if (document.getElementById('postModal')?.classList.contains('active')) {
+      closeBlogModal(true);
     }
   });
 });

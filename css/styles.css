@@ -3,14 +3,18 @@
    ============================================ */
 
 :root {
-    /* Paleta de Cores - Branco/Azul/Dourado */
-    --color-primary: #1F3A7D;           /* Azul Navy Profundo (Estrutura Principal) */
-    --color-secondary: #AE9471;         /* Marrom Quente Premium (Destaques e CTAs) */
-    --color-background: #F8F9FA;        /* Branco Off-White (Fundo Dominante - 60%) */
-    --color-text: #2C3E50;              /* Azul-Cinza Escuro (Legibilidade) */
-    --color-text-light: #5A6C7D;        /* Azul-Cinza Médio (Texto Secundário) */
-    --color-border: #E0E4E8;            /* Borda Neutra Clara */
-    --color-white: #FFFFFF;             /* Branco Puro */
+    /* Proporção de marca: 60% branco | 30% azul | 10% dourado */
+    --color-surface: #FFFFFF;
+    --color-primary: #1F3A7D;
+    --color-secondary: #AE9471;
+    --color-background: var(--color-surface);
+    --color-text: #1A2A3A;
+    --color-text-light: #4A5D73;
+    --color-border: #E8EBF0;
+    --color-white: #FFFFFF;
+    --color-whatsapp: #25D366;
+    --color-whatsapp-dark: #128C7E;
+    --color-whatsapp-hover: #20BD5A;
     
     /* Paleta Expandida - Azul */
     --color-blue-dark: #0F1F4D;         /* Azul Muito Escuro */
@@ -55,6 +59,9 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: clip;
+    width: 100%;
+    max-width: 100%;
 }
 
 /* Scrollbar Branco/Azul/Dourado */
@@ -88,13 +95,16 @@ html {
 body {
     font-family: var(--font-sans);
     color: var(--color-text);
-    background-color: var(--color-background);
+    background-color: var(--color-white);
     line-height: 1.6;
     font-size: 16px;
     position: relative;
+    overflow-x: clip;
+    width: 100%;
+    max-width: 100%;
 }
 
-/* Efeito de profundidade sutil - Branco/Azul */
+/* Profundidade sutil — apenas azul muito leve (60% branco limpo) */
 body::before {
     content: '';
     position: fixed;
@@ -102,23 +112,9 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
-        radial-gradient(ellipse at 20% 80%, rgba(31, 58, 125, 0.03) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 20%, rgba(15, 31, 77, 0.02) 0%, transparent 50%),
-        repeating-linear-gradient(
-            0deg,
-            rgba(212, 175, 55, 0.01) 0px,
-            rgba(212, 175, 55, 0.01) 1px,
-            transparent 1px,
-            transparent 3px
-        ),
-        repeating-linear-gradient(
-            90deg,
-            transparent 0px,
-            transparent 2px,
-            rgba(31, 58, 125, 0.005) 2px,
-            rgba(31, 58, 125, 0.005) 3px
-        );
+    background:
+        radial-gradient(ellipse at 15% 85%, rgba(31, 58, 125, 0.025) 0%, transparent 45%),
+        radial-gradient(ellipse at 85% 15%, rgba(31, 58, 125, 0.02) 0%, transparent 45%);
     pointer-events: none;
     z-index: 1;
 }
@@ -154,11 +150,14 @@ a:hover {
 
 .section-container {
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
     padding: 0 var(--spacing-md);
+    box-sizing: border-box;
 }
 
 section {
+    position: relative;
     padding: var(--spacing-xxl) 0;
 }
 
@@ -166,6 +165,7 @@ section {
     font-size: 3rem;
     margin-bottom: var(--spacing-md);
     text-align: center;
+    color: var(--color-primary);
 }
 
 .section-subtitle {
@@ -184,7 +184,10 @@ section {
 .header {
     position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     width: 100%;
+    max-width: 100%;
     background-color: rgba(31, 58, 125, 0.97);
     backdrop-filter: blur(10px);
     z-index: 1000;
@@ -468,13 +471,15 @@ section {
 
 .hero {
     margin-top: 60px;
-    height: 100vh;
+    height: 88vh;
+    min-height: 520px;
+    max-height: 900px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
-    background: #1F3A7D;
+    background: var(--color-white);
     border: none;
     box-shadow: none;
 }
@@ -506,15 +511,15 @@ section {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(ellipse 90% 80% at 50% 45%, transparent 0%, rgba(31, 58, 125, 0.40) 55%, rgba(15, 31, 77, 0.65) 100%),
         linear-gradient(
             180deg,
-            rgba(212, 175, 55, 0.15) 0%,
-            rgba(31, 58, 125, 0.25) 45%,
-            rgba(15, 31, 77, 0.55) 100%
-        );
+            rgba(255, 255, 255, 0.12) 0%,
+            rgba(31, 58, 125, 0.18) 45%,
+            rgba(15, 31, 77, 0.42) 100%
+        ),
+        radial-gradient(ellipse 85% 75% at 50% 40%, transparent 25%, rgba(31, 58, 125, 0.22) 100%);
     z-index: 3;
-    box-shadow: inset 0 0 120px rgba(15, 31, 77, 0.40);
+    box-shadow: inset 0 0 80px rgba(15, 31, 77, 0.18);
 }
 
 .hero-content {
@@ -531,14 +536,18 @@ section {
     line-height: 1.3;
     margin-bottom: var(--spacing-lg);
     color: var(--color-white);
+    text-shadow:
+        0 2px 24px rgba(15, 31, 77, 0.75),
+        0 1px 4px rgba(0, 0, 0, 0.45);
     animation: fadeInUp 0.8s ease-out;
 }
 
 .hero-subtitle {
     font-size: 1.3rem;
     margin-bottom: var(--spacing-xl);
-    color: rgba(255, 255, 255, 0.9);
-    font-weight: 300;
+    color: rgba(255, 255, 255, 0.96);
+    font-weight: 400;
+    text-shadow: 0 1px 14px rgba(15, 31, 77, 0.55);
     animation: fadeInUp 0.8s ease-out 0.2s backwards;
 }
 
@@ -565,7 +574,7 @@ section {
     background-color: var(--color-secondary);
     color: var(--color-primary);
     border-color: var(--color-secondary);
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    box-shadow: var(--shadow-sm);
     font-weight: 700;
     letter-spacing: 2px;
 }
@@ -574,8 +583,7 @@ section {
     background-color: transparent;
     color: var(--color-secondary);
     transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    box-shadow: var(--shadow-md);
 }
 
 .btn-secondary {
@@ -591,9 +599,33 @@ section {
     box-shadow: var(--shadow-md);
 }
 
+.btn-whatsapp {
+    background-color: var(--color-whatsapp);
+    color: var(--color-white);
+    border-color: var(--color-whatsapp);
+}
+
+.btn-whatsapp:hover {
+    background-color: var(--color-whatsapp-dark);
+    border-color: var(--color-whatsapp-dark);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+}
+
 #email-text {
     width: 100%;
-    white-space: nowrap;
+    max-width: 100%;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+.contact-item .btn {
+    max-width: 100%;
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: anywhere;
 }
 
 .btn-accent {
@@ -640,25 +672,20 @@ section {
     aspect-ratio: 4/5;
     object-fit: cover;
     border-radius: 0px;
-    box-shadow: 
-        0 20px 50px rgba(31, 58, 125, 0.25),
-        -6px 6px 0px rgba(212, 175, 55, 0.4),
-        inset 0 0 30px rgba(0, 0, 0, 0.15),
-        inset 0 0 0 1px rgba(212, 175, 55, 0.1);
+    box-shadow: var(--shadow-lg);
     display: block;
-    border: 12px solid #AE9471;
-    filter: sepia(0.25) contrast(1.1) brightness(0.96) saturate(0.8);
+    border: 1px solid var(--color-border);
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 4px;
+    filter: sepia(0.15) contrast(1.08) brightness(0.98) saturate(0.85);
     transition: all 0.3s ease-in-out;
     position: relative;
 }
 
 .about-image-img:hover {
-    filter: sepia(0.35) contrast(1.15) brightness(0.98) saturate(0.85);
-    transform: translateY(-6px) rotate(-1deg);
-    box-shadow: 
-        0 25px 60px rgba(31, 58, 125, 0.30),
-        -8px 8px 0px rgba(212, 175, 55, 0.5),
-        inset 0 0 30px rgba(0, 0, 0, 0.2);
+    filter: sepia(0.2) contrast(1.1) brightness(1) saturate(0.9);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(31, 58, 125, 0.18);
 }
 
 .image-placeholder {
@@ -693,8 +720,8 @@ section {
 
 .highlight {
     padding: var(--spacing-md) var(--spacing-md) var(--spacing-md) var(--spacing-lg);
-    border-left: 6px solid var(--color-secondary);
-    background-color: transparent;
+    border-left: 3px solid var(--color-secondary);
+    background-color: var(--color-white);
     border-radius: 0;
     transition: var(--transition-smooth);
 }
@@ -723,7 +750,7 @@ section {
    ============================================ */
 
 .saturdays {
-    background: linear-gradient(180deg, var(--color-background) 0%, var(--color-white) 100%);
+    background-color: var(--color-white);
 }
 
 .saturday-intro {
@@ -766,6 +793,8 @@ section {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: var(--shadow-lg);
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-primary);
     transition: var(--transition-smooth);
     animation: fadeInUp 0.8s ease-out;
     display: flex;
@@ -781,7 +810,8 @@ section {
 .saturday-card-media {
     flex: 0 0 auto;
     padding: 14px 16px;
-    background: linear-gradient(135deg, #D6E4F7, #C8D9F0);
+    background: var(--color-white);
+    border-right: 1px solid var(--color-border);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -795,11 +825,9 @@ section {
     max-height: min(500px, 62vh);
     object-fit: contain;
     object-position: center;
-    border: 6px solid #C8D9F0;
+    border: 1px solid var(--color-border);
     filter: sepia(0.05) contrast(1.05);
-    box-shadow:
-        inset 0 0 12px rgba(0, 0, 0, 0.06),
-        0 4px 14px rgba(0, 0, 0, 0.12);
+    box-shadow: var(--shadow-sm);
     transition: filter 0.3s ease-in-out;
 }
 
@@ -812,9 +840,9 @@ section {
     height: 280px;
     object-fit: contain;
     object-position: center;
-    border: 6px solid #C8D9F0;
+    border: 1px solid var(--color-border);
     filter: sepia(0.02) contrast(1.05);
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-sm);
     transition: all 0.3s ease-in-out;
 }
 
@@ -825,14 +853,12 @@ section {
 .saturday-image-placeholder {
     width: 100%;
     height: 280px;
-    background: linear-gradient(135deg, #D6E4F7, #C8D9F0);
+    background: var(--color-white);
     display: block;
     object-fit: contain;
     object-position: center;
-    border: 6px solid #C8D9F0;
-    box-shadow:
-        inset 0 0 20px rgba(0, 0, 0, 0.1),
-        0 6px 16px rgba(0, 0, 0, 0.12);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-sm);
 }
 
 .saturday-card.featured .saturday-content {
@@ -1015,11 +1041,10 @@ section {
     min-width: 0;
     background: var(--color-white);
     border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-primary);
     border-radius: 0px;
     overflow: hidden;
-    box-shadow: 
-        0 8px 24px rgba(31, 58, 125, 0.10),
-        -4px 4px 0px rgba(212, 175, 55, 0.15);
+    box-shadow: var(--shadow-md);
     transition: var(--transition-smooth);
     animation: fadeInUp 0.8s ease-out;
     display: flex;
@@ -1028,11 +1053,9 @@ section {
 }
 
 .roteiro-card:hover {
-    box-shadow: 
-        0 12px 32px rgba(31, 58, 125, 0.15),
-        -6px 6px 0px rgba(212, 175, 55, 0.25);
+    box-shadow: var(--shadow-lg);
     transform: translateY(-8px);
-    border-color: var(--color-secondary);
+    border-color: rgba(31, 58, 125, 0.25);
 }
 
 .roteiro-image-placeholder {
@@ -1324,7 +1347,7 @@ section {
    ============================================ */
 
 .contact {
-    background: linear-gradient(180deg, var(--color-white) 0%, var(--color-background) 100%);
+    background-color: var(--color-white);
 }
 
 .contact-grid {
@@ -1339,6 +1362,8 @@ section {
     padding: var(--spacing-xl);
     background-color: var(--color-white);
     border-radius: 8px;
+    border: 1px solid var(--color-border);
+    border-top: 3px solid var(--color-primary);
     box-shadow: var(--shadow-sm);
     transition: var(--transition-smooth);
     animation: fadeInUp 0.8s ease-out;
@@ -1347,10 +1372,12 @@ section {
 .contact-item:hover {
     box-shadow: var(--shadow-md);
     transform: translateY(-4px);
+    border-top-color: var(--color-secondary);
 }
 
 .contact-item h4 {
     margin-bottom: var(--spacing-md);
+    color: var(--color-primary);
 }
 
 /* ============================================
@@ -1358,9 +1385,14 @@ section {
    ============================================ */
 
 .footer {
-    background-color: var(--color-primary);
-    color: var(--color-white);
+    background-color: var(--color-white);
+    color: var(--color-text);
     padding: var(--spacing-xl) 0 var(--spacing-lg);
+    border-top: 4px solid var(--color-primary);
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+    box-sizing: border-box;
 }
 
 .footer-content {
@@ -1368,16 +1400,18 @@ section {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: var(--spacing-xl);
     margin-bottom: var(--spacing-xl);
+    width: 100%;
+    min-width: 0;
 }
 
 .footer-section h4 {
-    color: var(--color-secondary);
+    color: var(--color-primary);
     margin-bottom: var(--spacing-md);
 }
 
 .footer-section p,
 .footer-section a {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--color-text-light);
     font-size: 0.9rem;
 }
 
@@ -1394,24 +1428,33 @@ section {
 }
 
 .footer-bottom {
-    border-top: 1px solid rgba(212, 175, 55, 0.2);
+    border-top: 1px solid var(--color-border);
     padding-top: var(--spacing-lg);
     text-align: center;
+    width: 100%;
+    min-width: 0;
 }
 
 .footer-bottom p {
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--color-text-light);
     margin-bottom: var(--spacing-sm);
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.footer-legal {
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .footer-legal a {
-    color: var(--color-secondary);
+    color: var(--color-primary);
 }
 
 .footer-credit {
     font-size: 0.75rem !important;
-    color: rgba(212, 175, 55, 0.8) !important;
+    color: var(--color-text-light) !important;
     margin-top: var(--spacing-md) !important;
 }
 
@@ -1470,18 +1513,18 @@ section {
     }
 }
 
-@keyframes pulse {
-    0%, 100% {
-        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
-    }
-    50% {
-        box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
-    }
-}
-
 /* ============================================
    WHATSAPP FLUTUANTE
    ============================================ */
+
+@keyframes pulse-whatsapp {
+    0%, 100% {
+        box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35), 0 0 0 0 rgba(37, 211, 102, 0.45);
+    }
+    50% {
+        box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35), 0 0 0 12px rgba(37, 211, 102, 0);
+    }
+}
 
 .whatsapp-float {
     position: fixed;
@@ -1489,8 +1532,8 @@ section {
     right: 30px;
     width: 60px;
     height: 60px;
-    background: linear-gradient(135deg, var(--color-primary), #0a2540);
-    border: 2px solid var(--color-secondary);
+    background: var(--color-whatsapp);
+    border: 2px solid var(--color-white);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1499,15 +1542,16 @@ section {
     cursor: pointer;
     z-index: 999;
     transition: var(--transition-smooth);
-    animation: float 3s ease-in-out infinite, pulse 2s ease-in-out infinite;
+    animation: float 3s ease-in-out infinite, pulse-whatsapp 2s ease-in-out infinite;
     text-decoration: none;
-    box-shadow: 0 4px 16px rgba(31, 58, 125, 0.15);
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
 }
 
 .whatsapp-float:hover {
     transform: scale(1.1);
-    box-shadow: 0 8px 24px rgba(31, 58, 125, 0.25);
-    border-color: #AE9471;
+    background: var(--color-whatsapp-dark);
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.45);
+    border-color: var(--color-white);
     animation: none;
 }
 
@@ -1738,7 +1782,18 @@ section {
     }
 
     .footer-content {
+        grid-template-columns: 1fr;
         gap: var(--spacing-lg);
+        min-width: 0;
+    }
+
+    .footer-bottom {
+        padding-left: var(--spacing-sm);
+        padding-right: var(--spacing-sm);
+    }
+
+    .about-image-img {
+        outline-offset: 2px;
     }
 }
 
@@ -1792,6 +1847,17 @@ section {
 
     .footer-content {
         grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        min-width: 0;
+    }
+
+    .footer-bottom {
+        padding-left: var(--spacing-sm);
+        padding-right: var(--spacing-sm);
+    }
+
+    .about-image-img {
+        outline-offset: 2px;
     }
 }
 
@@ -1829,8 +1895,7 @@ section {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--color-secondary);
-    box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+    background: var(--color-blue-light);
 }
 
 /* Scrollbar para Firefox */
@@ -1852,8 +1917,8 @@ section::before {
     transform: translateX(-50%);
     width: 80%;
     height: 1px;
-    background: linear-gradient(to right, transparent, var(--color-secondary), transparent);
-    opacity: 0.3;
+    background: linear-gradient(to right, transparent, rgba(31, 58, 125, 0.15), transparent);
+    opacity: 1;
 }
 
 /* Subtítulos com estilo mais ornamental */
@@ -1884,8 +1949,8 @@ section::before {
     font-weight: 600;
     letter-spacing: 0.5px;
     display: inline-block;
-    border: 1px solid rgba(212, 175, 55, 0.5);
-    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.2);
+    border: none;
+    box-shadow: none;
 }
 
 /* Texto com sombra vintage sutil */
@@ -1912,12 +1977,12 @@ section::before {
     width: 100%;
     aspect-ratio: 16 / 9;
     min-height: 400px;
-    background: var(--color-primary);
+    background: var(--color-white);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 
-        0 12px 40px rgba(31, 58, 125, 0.20),
-        -6px 6px 0px rgba(212, 175, 55, 0.25);
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--color-border);
+    border-bottom: 3px solid var(--color-secondary);
     transition: var(--transition-smooth);
 }
 
@@ -1950,15 +2015,17 @@ section::before {
     bottom: 24px;
     left: 50%;
     transform: translateX(-50%);
-    background: rgba(31, 58, 125, 0.88);
-    color: var(--color-white);
+    background: rgba(255, 255, 255, 0.96);
+    color: var(--color-primary);
     padding: 12px 28px 10px;
     border-radius: 4px;
     text-align: center;
     backdrop-filter: blur(8px);
-    border: 1px solid rgba(212, 175, 55, 0.3);
+    border: 1px solid var(--color-border);
+    border-bottom: 2px solid var(--color-secondary);
     font-family: var(--font-sans);
     min-width: min(280px, 90%);
+    box-shadow: var(--shadow-md);
 }
 
 .gallery-caption {
@@ -1966,13 +2033,14 @@ section::before {
     font-weight: 600;
     letter-spacing: 0.5px;
     line-height: 1.2;
+    color: var(--color-primary);
 }
 
 .gallery-credit {
     margin: 8px 0 0;
     font-size: 0.8rem;
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--color-text-light);
     letter-spacing: 0.02em;
 }
 
