@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Rioclássica · Turismo e Cultura</title>
+    <meta name="description" content="Rioclássica: experiências culturais para empresas, marcas e instituições. História, criatividade e curadoria para conectar pessoas ao Rio de Janeiro.">
+    <link rel="icon" type="image/png" href="assets/image/logo.png">
+    <link rel="apple-touch-icon" href="assets/image/logo.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Rioclássica">
+    <meta property="og:title" content="Rioclássica · Turismo e Cultura">
+    <meta property="og:description" content="Experiências culturais para empresas, marcas e instituições. História, criatividade e curadoria para conectar pessoas ao Rio de Janeiro.">
+    <meta property="og:image" content="https://rioclassica.netlify.app/assets/image/logo.png">
+    <meta property="og:image:width" content="500">
+    <meta property="og:image:height" content="500">
+    <meta property="og:url" content="https://rioclassica.netlify.app/">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Rioclássica · Turismo e Cultura">
+    <meta name="twitter:description" content="Experiências culturais para empresas, marcas e instituições. Mais que turismo, experiências de vida.">
+    <meta name="twitter:image" content="https://rioclassica.netlify.app/assets/image/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css">
+    <link rel="stylesheet" href="css/styles.css?v=43">
+    <script src="js/spotify-autoplay.js?v=3"></script>
+    <script src="https://open.spotify.com/embed/iframe-api/v1"></script>
+</head>
+<body>
+    <!-- HEADER  -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <!-- LOGO À ESQUERDA -->
+                <a href="#hero" class="logo">
+                    <img src="assets/image/logo.png" alt="Agência Rioclássica" class="logo-image">
+                    <div class="logo-text">
+                        <h1>AGÊNCIA RIOCLÁSSICA</h1>
+                        <p>TURISMO E CULTURA</p>
+                    </div>
+                </a>
+
+                <!-- MENU CENTRALIZADO -->
+                <ul class="nav-links">
+                    <li><a href="#quem-somos" class="nav-link" data-i18n="nav.about">Quem Somos</a></li>
+                    <li><a href="#flaneur" class="nav-link" data-i18n="nav.flaneur">Flâneur</a></li>
+                    <li><a href="#sabados" class="nav-link" data-i18n="nav.saturdays">Experiências</a></li>
+                    <li><a href="#roteiros" class="nav-link" data-i18n="nav.roteiros">Roteiros</a></li>
+                    <li class="nav-item-more" data-nav-more>
+                        <button type="button" class="nav-more-trigger" aria-expanded="false" aria-haspopup="true" data-i18n="nav.more">Mais</button>
+                        <ul class="nav-more-menu" hidden>
+                            <li><a href="#servicos" class="nav-link" data-i18n="nav.services">Serviços</a></li>
+                            <li><a href="#projetos" class="nav-link" data-i18n="nav.projects">Projetos</a></li>
+                            <li><a href="/blog.html" class="nav-link">Blog</a></li>
+                            <li><a href="#galeria" class="nav-link" data-i18n="nav.gallery">Galeria</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#contato" class="nav-link" data-i18n="nav.contact">Contato</a></li>
+                    <li class="nav-menu-lang nav-menu-lang--mobile">
+                        <p class="nav-menu-lang-label" data-i18n="nav.language">Idioma</p>
+                        <div class="lang-dropdown lang-dropdown--in-menu" data-lang-dropdown="mobile">
+                            <ul class="lang-dropdown-menu lang-dropdown-menu--inline" role="listbox">
+                                <li>
+                                    <button type="button" class="lang-option active" data-lang="pt-BR" role="option" aria-selected="true">
+                                        <span class="lang-flag fi fi-br" aria-hidden="true"></span>
+                                        <span class="lang-option-text"><strong>PT</strong> Português</span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="lang-option" data-lang="en" role="option" aria-selected="false">
+                                        <span class="lang-flag fi fi-us" aria-hidden="true"></span>
+                                        <span class="lang-option-text"><strong>EN</strong> English</span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="lang-option" data-lang="es" role="option" aria-selected="false">
+                                        <span class="lang-flag fi fi-es" aria-hidden="true"></span>
+                                        <span class="lang-option-text"><strong>ES</strong> Español</span>
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="button" class="lang-option" data-lang="fr" role="option" aria-selected="false">
+                                        <span class="lang-flag fi fi-fr" aria-hidden="true"></span>
+                                        <span class="lang-option-text"><strong>FR</strong> Français</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="nav-header-actions">
+                    <div class="lang-dropdown lang-dropdown--desktop" id="langDropdown" data-lang-dropdown="desktop">
+                        <button type="button" class="lang-dropdown-trigger" id="langDropdownTrigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Idioma do site">
+                            <span class="lang-flag fi fi-br" id="langCurrentFlag" aria-hidden="true"></span>
+                            <span class="lang-current-code" id="langCurrentCode">PT</span>
+                            <span class="lang-chevron" aria-hidden="true"></span>
+                        </button>
+                        <ul class="lang-dropdown-menu" id="langDropdownMenu" role="listbox" hidden>
+                            <li>
+                                <button type="button" class="lang-option active" data-lang="pt-BR" role="option" aria-selected="true">
+                                    <span class="lang-flag fi fi-br" aria-hidden="true"></span>
+                                    <span class="lang-option-text"><strong>PT</strong> Português</span>
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" class="lang-option" data-lang="en" role="option" aria-selected="false">
+                                    <span class="lang-flag fi fi-us" aria-hidden="true"></span>
+                                    <span class="lang-option-text"><strong>EN</strong> English</span>
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" class="lang-option" data-lang="es" role="option" aria-selected="false">
+                                    <span class="lang-flag fi fi-es" aria-hidden="true"></span>
+                                    <span class="lang-option-text"><strong>ES</strong> Español</span>
+                                </button>
+                            </li>
+                            <li>
+                                <button type="button" class="lang-option" data-lang="fr" role="option" aria-selected="false">
+                                    <span class="lang-flag fi fi-fr" aria-hidden="true"></span>
+                                    <span class="lang-option-text"><strong>FR</strong> Français</span>
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+        <div class="hero-overlay"></div>
+        <!-- Imagem: experiência em grupo -->
+        <img src="assets/image/tour-78.jpg" alt="Flâneur fotografando o patrimônio histórico do Rio de Janeiro" class="hero-image-placeholder">
+        
+        <div class="hero-content">
+            <p class="hero-eyebrow" data-i18n="hero.eyebrow">Rioclássica · Turismo e Cultura</p>
+            <h2 class="hero-title" id="hero-title" data-i18n="hero.title">Mais que turismo, experiências de vida</h2>
+            <p class="hero-subtitle" id="hero-subtitle" data-i18n="hero.subtitle">Roteiros culturais para quem quer conhecer o Rio e para empresas, marcas e instituições que querem conectar pessoas à cidade.</p>
+            <div class="hero-actions">
+                <a href="#sabados" class="btn btn-primary btn-large" id="hero-btn" data-i18n="hero.btn">Ver próximas experiências</a>
+                <a href="#roteiros" class="btn btn-outline btn-large hero-btn-secondary" data-i18n="hero.btnSecondary">Explorar roteiros</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUEM SOMOS -->
+    <section class="about" id="quem-somos">
+        <div class="section-container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <!-- Imagem Quem Somos -->
+                    <img src="assets/image/quemsomos.jpg" alt="Agência Rioclássica - Fundadora" class="about-image-img">
+                </div>
+                
+                <div class="about-content">
+                    <h2 class="section-title" id="about-title" data-i18n="about.title">A cidade como lugar de encontro e descoberta</h2>
+                    <p class="section-subtitle" id="about-subtitle" data-i18n="about.subtitle">Conhecer o Rio Antigo é conhecer a própria história.</p>
+                    
+                    <p class="about-text" id="about-text" data-i18n="about.text">
+                        A Rioclássica é uma agência de turismo e cultura que cria experiências a partir da história, da literatura, da arquitetura, da arte e da memória do Rio de Janeiro. Com pesquisa e curadoria autoral, desenvolvemos roteiros que aproximam as pessoas da cidade e ampliam seu repertório cultural.
+                    </p>
+                    <p class="about-text" data-i18n="about.text2">
+                        Atendemos quem deseja viver o Rio Antigo em um sábado aberto ou em um roteiro privativo, e também empresas, marcas e instituições que buscam experiências alinhadas ao público e aos objetivos de cada projeto.
+                    </p>
+                    
+                    <div class="about-highlights">
+                        <div class="highlight">
+                            <h4 id="highlight-1-title" data-i18n="about.h1.title">Para você</h4>
+                            <p id="highlight-1-text" data-i18n="about.h1.text">Experiências de sábado e roteiros privativos para conhecer a cidade com profundidade e presença.</p>
+                        </div>
+                        <div class="highlight">
+                            <h4 id="highlight-2-title" data-i18n="about.h2.title">Para empresas e instituições</h4>
+                            <p id="highlight-2-text" data-i18n="about.h2.text">Press tours, programação cultural e ações sob medida: do encontro presencial à apresentação no palco.</p>
+                        </div>
+                        <div class="highlight">
+                            <h4 id="highlight-3-title" data-i18n="about.h3.title">Pesquisa e curadoria</h4>
+                            <p id="highlight-3-text" data-i18n="about.h3.text">Roteiros autorais que conectam história, literatura, arquitetura e memória aos lugares do Rio.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="flaneur-block" id="flaneur" aria-labelledby="flaneur-title">
+                <p class="flaneur-eyebrow" data-i18n="flaneur.eyebrow">Comunidade Rioclássica</p>
+                <h2 class="section-title" id="flaneur-title" data-i18n="flaneur.title">O espírito do Flâneur na Rioclássica</h2>
+                <p class="flaneur-text" data-i18n="flaneur.text1">
+                    Na Rioclássica, acreditamos que uma cidade não se revela na pressa. Por isso, resgatamos a figura histórica do flâneur (pronuncia-se flanêr), o caminhante observador que nasceu na Paris do século XIX e encontrou morada natural no Rio da Belle Époque.
+                </p>
+                <p class="flaneur-text" data-i18n="flaneur.text2">
+                    Consagrado por Charles Baudelaire como o "observador apaixonado" da vida urbana, definido por Honoré de Balzac como a "gastronomia dos olhos" e traduzido para a alma carioca por João do Rio como "a distinção de perambular com inteligência", o flâneur é aquele que desacelera o passo para ler as ruas como um livro aberto.
+                </p>
+                <p class="flaneur-text" data-i18n="flaneur.text3">
+                    Mais do que visitar monumentos, convidamos você a caminhar com olhar atento e curioso, transformando cada fachada, café histórico e esquina em descoberta cultural.
+                </p>
+                <p class="flaneur-proof" data-i18n="flaneur.proof">
+                    Mais de 3.000 flâneurs do Brasil e do mundo já caminharam pelo Rio com a Rioclássica.
+                </p>
+                <div class="flaneur-actions">
+                    <a href="https://wa.me/21990234090?text=Ol%C3%A1%20Riocl%C3%A1ssica!%20Gostaria%20de%20saber%20mais%20sobre%20os%20roteiros%20e%20me%20tornar%20um%20fl%C3%A2neur." target="_blank" rel="noopener noreferrer" class="btn btn-accent" data-i18n="flaneur.cta">Quero ser um flâneur</a>
+                    <a href="#sabados" class="btn btn-outline" data-i18n="flaneur.ctaSecondary">Ver próximas experiências</a>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- EXPERIÊNCIAS DE SÁBADO -->
+    <section class="saturdays" id="sabados">
+        <div class="section-container">
+            <h2 class="section-title" id="saturdays-title" data-i18n="saturdays.title">Experiências de Sábado</h2>
+            <p class="section-subtitle" id="saturdays-subtitle" data-i18n="saturdays.subtitle">Roteiros abertos | Vagas limitadas para garantir profundidade</p>
+            
+            <div class="featured-saturday" id="featured-saturday-mount" aria-live="polite"></div>
+            <p class="saturday-explanation" id="saturday-explanation-mount" hidden></p>
+        </div>
+    </section>
+
+    <!-- ROTEIROS FIXOS / PRIVATIVOS -->
+    <section class="roteiros" id="roteiros">
+        <div class="section-container">
+            <h2 class="section-title" id="roteiros-title" data-i18n="roteiros.title">Roteiros fixos</h2>
+            <p class="section-subtitle" id="roteiros-subtitle" data-i18n="roteiros.subtitle">Experiências privativas | Customize sua jornada histórica</p>
+            
+            <div class="roteiros-grid">
+                <!-- CARD E: Um dia no Rio Antigo -->
+                <div class="roteiro-card">
+                    <img src="assets/image/rio-antigo.jpg" alt="Um dia no Rio Antigo" class="roteiro-image">
+                    <div class="roteiro-body">
+                        <h3 class="roteiro-title" id="card-e-title" data-i18n="card.e.title">Um dia no Rio Antigo</h3>
+                        <p class="roteiro-subtitle" id="card-e-subtitle" data-i18n="card.e.subtitle">Patrimônio, memória e descoberta</p>
+                        <p class="roteiro-description roteiro-description--preview" id="card-e-desc" data-i18n="card.e.desc">
+                            Um percurso pelo Centro Histórico que aproxima os participantes dos lugares e das histórias que moldaram a cidade. Uma imersão no patrimônio carioca para conhecer o Rio Antigo e a própria história.
+                        </p>
+                        <div class="roteiro-meta">
+                            <span class="meta-item" data-i18n="meta.duration">⏱️ 3h a 4h</span>
+                            <span class="meta-item" data-i18n="meta.languages">🌍 PT / EN / ES / FR</span>
+                        </div>
+                        <div class="roteiro-actions">
+                            <button type="button" class="btn btn-outline roteiro-details-btn" data-i18n="ui.viewDetails">Ver detalhes</button>
+                            <a href="https://wa.me/21990234090?text=Olá%20Riocl%C3%A1ssica!%20Gostaria%20de%20solicitar%20um%20roteiro%20privativo%20-%20Um%20dia%20no%20Rio%20Antigo" target="_blank" rel="noopener noreferrer" class="btn btn-accent" data-i18n="ui.reserveNow">Reservar agora</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD A: Igrejas Históricas -->
+                <div class="roteiro-card">
+                    <img src="assets/image/igreja-da-candelaria.jpg" alt="Tour pelas Igrejas Históricas: Candelária" class="roteiro-image">
+                    <div class="roteiro-body">
+                        <h3 class="roteiro-title" id="card-a-title" data-i18n="card.a.title">Tour pelas Igrejas Históricas</h3>
+                        <p class="roteiro-subtitle" id="card-a-subtitle" data-i18n="card.a.subtitle">Fé, Arquitetura Barroca e Colonial</p>
+                        <p class="roteiro-description roteiro-description--preview" id="card-a-desc" data-i18n="card.a.desc">
+                            Caminhada através dos templos que definiram a paisagem espiritual do Rio. Inclui a Basílica da Candelária, Igreja de São Francisco da Penitência e suas gemas arquitetônicas escondidas.
+                        </p>
+                        <div class="roteiro-meta">
+                            <span class="meta-item" id="duration" data-i18n="meta.duration">⏱️ 3h a 4h</span>
+                            <span class="meta-item" id="languages" data-i18n="meta.languages">🌍 PT / EN / ES / FR</span>
+                        </div>
+                        <div class="roteiro-actions">
+                            <button type="button" class="btn btn-outline roteiro-details-btn" data-i18n="ui.viewDetails">Ver detalhes</button>
+                            <a href="https://wa.me/21990234090?text=Olá%20Riocl%C3%A1ssica!%20Gostaria%20de%20solicitar%20um%20roteiro%20privativo%20-%20Tour%20pelas%20Igrejas%20Históricas" target="_blank" rel="noopener noreferrer" class="btn btn-accent" id="request-btn" data-i18n="ui.reserveNow">Reservar agora</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD B: Centro do Rio Imperial -->
+                <div class="roteiro-card">
+                    <img src="assets/image/rioimperial.jpg" alt="Centro do Rio Imperial" class="roteiro-image">
+                    <div class="roteiro-body">
+                        <h3 class="roteiro-title" id="card-b-title" data-i18n="card.b.title">Centro do Rio Imperial</h3>
+                        <p class="roteiro-subtitle" id="card-b-subtitle" data-i18n="card.b.subtitle">Uma Viagem no Tempo pela Corte</p>
+                        <p class="roteiro-description roteiro-description--preview" id="card-b-desc" data-i18n="card.b.desc">
+                            Praça XV, Paço Imperial e as intrigas políticas que moldaram a história. Compreenda os trâmites administrativos e as estratégias que construíram a identidade carioca.
+                        </p>
+                        <div class="roteiro-meta">
+                            <span class="meta-item" id="b-duration" data-i18n="meta.duration">⏱️ 3h a 4h</span>
+                            <span class="meta-item" id="b-languages" data-i18n="meta.languages">🌍 PT / EN / ES / FR</span>
+                        </div>
+                        <div class="roteiro-actions">
+                            <button type="button" class="btn btn-outline roteiro-details-btn" data-i18n="ui.viewDetails">Ver detalhes</button>
+                            <a href="https://wa.me/21990234090?text=Olá%20Riocl%C3%A1ssica!%20Gostaria%20de%20solicitar%20um%20roteiro%20privativo%20-%20Centro%20do%20Rio%20Imperial" target="_blank" rel="noopener noreferrer" class="btn btn-accent" id="request-btn-b" data-i18n="ui.reserveNow">Reservar agora</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD C: Confeitarias Históricas -->
+                <div class="roteiro-card">
+                    <img src="slides/images/01-colombo-fachada.jpg" alt="Confeitarias Históricas do Rio" class="roteiro-image">
+                    <div class="roteiro-body">
+                        <h3 class="roteiro-title" id="card-c-title" data-i18n="card.c.title">Confeitarias Históricas do Rio</h3>
+                        <p class="roteiro-subtitle" id="card-c-subtitle" data-i18n="card.c.subtitle">A Sofisticação da Belle Époque</p>
+                        <p class="roteiro-description roteiro-description--preview" id="card-c-desc" data-i18n="card.c.desc">
+                            Degustação e história através da Confeitaria Colombo, Casa Cavé, Manon e outras joias da tradição carioca. Uma experiência sensorial que conecta passado e presente.
+                        </p>
+                        <div class="roteiro-meta">
+                            <span class="meta-item" id="c-duration" data-i18n="meta.duration">⏱️ 3h a 4h</span>
+                            <span class="meta-item" id="c-languages" data-i18n="meta.languages">🌍 PT / EN / ES / FR</span>
+                        </div>
+                        <div class="roteiro-actions">
+                            <button type="button" class="btn btn-outline roteiro-details-btn" data-i18n="ui.viewDetails">Ver detalhes</button>
+                            <a href="https://wa.me/21990234090?text=Olá%20Riocl%C3%A1ssica!%20Gostaria%20de%20solicitar%20um%20roteiro%20privativo%20-%20Confeitarias%20Históricas" target="_blank" rel="noopener noreferrer" class="btn btn-accent" id="request-btn-c" data-i18n="ui.reserveNow">Reservar agora</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD D: Encontro Literário -->
+                <div class="roteiro-card">
+                    <img src="assets/image/machado-de-assis.jpg" alt="Encontro Literário" class="roteiro-image">
+                    <div class="roteiro-body">
+                        <h3 class="roteiro-title" id="card-d-title" data-i18n="card.d.title">Encontro Literário</h3>
+                        <p class="roteiro-subtitle" id="card-d-subtitle" data-i18n="card.d.subtitle">Machado de Assis e Contexto Histórico</p>
+                        <p class="roteiro-description roteiro-description--preview" id="card-d-desc" data-i18n="card.d.desc">
+                            Imersão nos contos clássicos como "A Cartomante" e "Missa do Galo". Uma fusão de leitura dramatizada, análise contextual e caminhada pelos espaços que inspiraram os textos.
+                        </p>
+                        <div class="roteiro-meta">
+                            <span class="meta-item" id="d-duration" data-i18n="meta.duration">⏱️ 3h a 4h</span>
+                            <span class="meta-item" id="d-languages" data-i18n="meta.languages">🌍 PT / EN / ES / FR</span>
+                        </div>
+                        <div class="roteiro-actions">
+                            <button type="button" class="btn btn-outline roteiro-details-btn" data-i18n="ui.viewDetails">Ver detalhes</button>
+                            <a href="https://wa.me/21990234090?text=Olá%20Riocl%C3%A1ssica!%20Gostaria%20de%20solicitar%20um%20roteiro%20privativo%20-%20Encontro%20Literário" target="_blank" rel="noopener noreferrer" class="btn btn-accent" id="request-btn-d" data-i18n="ui.reserveNow">Reservar agora</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O QUE PODEMOS CRIAR JUNTOS -->
+    <section class="services" id="servicos">
+        <div class="section-container">
+            <h2 class="section-title" data-i18n="services.title">O que podemos criar juntos</h2>
+            <p class="section-subtitle" data-i18n="services.subtitle">Para quem quer viver a cidade e para organizações que querem oferecer essa experiência</p>
+
+            <div class="section-photo-strip" aria-hidden="true">
+                <img src="assets/image/Moda-132.jpg" alt="" class="section-photo" loading="lazy">
+                <img src="slides/images/11-experiencia-em-grupo.jpg" alt="" class="section-photo" loading="lazy">
+                <img src="assets/image/xicara-vintage.jpg" alt="" class="section-photo" loading="lazy">
+                <img src="slides/images/10-caminhada-cultural.jpg" alt="" class="section-photo" loading="lazy">
+            </div>
+
+            <div class="services-grid">
+                <article class="service-item">
+                    <h3 data-i18n="services.s0.title">Roteiros abertos e privativos</h3>
+                    <p data-i18n="services.s0.text">Experiências de sábado e percursos sob medida para pessoas, famílias e pequenos grupos.</p>
+                </article>
+                <article class="service-item">
+                    <h3 data-i18n="services.s1.title">Experiências para clientes e convidados</h3>
+                    <p data-i18n="services.s1.text">Roteiros culturais para ações de relacionamento, recepção de visitantes e encontros especiais.</p>
+                </article>
+                <article class="service-item">
+                    <h3 data-i18n="services.s2.title">Press tours e ações de marca</h3>
+                    <p data-i18n="services.s2.text">Percursos que conectam a cidade ao universo de uma produção, campanha ou marca.</p>
+                </article>
+                <article class="service-item">
+                    <h3 data-i18n="services.s3.title">Programação para eventos</h3>
+                    <p data-i18n="services.s3.text">Caminhadas temáticas e tours virtuais que integram a programação de festivais e encontros corporativos.</p>
+                </article>
+                <article class="service-item">
+                    <h3 data-i18n="services.s4.title">Experiências educativas</h3>
+                    <p data-i18n="services.s4.text">Roteiros para escolas e instituições de ensino, aproximando os conteúdos da vivência na cidade.</p>
+                </article>
+                <article class="service-item">
+                    <h3 data-i18n="services.s5.title">Palestras e encontros</h3>
+                    <p data-i18n="services.s5.text">Conversas sobre turismo cultural, economia criativa, empreendedorismo e criação de experiências.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJETOS / PARCERIAS INSTITUCIONAIS -->
+    <section class="projects" id="projetos">
+        <div class="section-container">
+            <h2 class="section-title" data-i18n="projects.title">Projetos e parcerias</h2>
+            <p class="section-subtitle" data-i18n="projects.subtitle">Alguns caminhos que já trilhamos com marcas, instituições e escolas</p>
+
+            <div class="projects-list">
+                <article class="project-case">
+                    <img src="slides/images/04-press-tour-disney.jpg" alt="Press tour Disney+ no Parque Guinle" class="project-case-image" loading="lazy">
+                    <div class="project-case-body">
+                        <p class="project-client">Disney+</p>
+                        <h3>O Rio como cenário de uma história</h3>
+                        <p class="project-meta">Press tour · Amor da Minha Vida, 2ª temporada</p>
+                        <p>A convite do Disney+, a Rioclássica realizou um press tour para jornalistas e influenciadores pelos cenários da série no Rio de Janeiro. O roteiro passou pelo Parque Guinle, Jardim Botânico e Edifício Touring, conectando os locais de gravação à história e à paisagem carioca.</p>
+                        <p>A experiência contou com a participação do diretor René Sampaio, que compartilhou inspirações e bastidores da produção ao longo do percurso.</p>
+                        <p class="project-tags">Roteiro personalizado · Imprensa e influenciadores · História e audiovisual</p>
+                        <a href="https://marcellenehmefotos.pixieset.com/rioclassicaeamordaminhavida/" target="_blank" rel="noopener noreferrer" class="project-link">Ver fotos do tour Disney+</a>
+                    </div>
+                </article>
+
+                <article class="project-case">
+                    <img src="slides/images/12-patrimonio-arquitetonico.jpg" alt="Patrimônio arquitetônico do Centro do Rio" class="project-case-image" loading="lazy">
+                    <div class="project-case-body">
+                        <p class="project-client">Patrimar</p>
+                        <h3>Conhecer a cidade para apresentar suas possibilidades</h3>
+                        <p class="project-meta">Tour virtual · Teatro Riachuelo</p>
+                        <p>No palco do Teatro Riachuelo, a Rioclássica apresentou um tour virtual pelo Centro do Rio para mais de 1.000 corretores de imóveis, em um evento da Patrimar. O objetivo era ampliar o conhecimento dos profissionais sobre a região, oferecendo referências para apresentar seus atributos e contextualizar os imóveis em seu entorno.</p>
+                        <p>Conduzida por Fernanda Duarte, a apresentação interativa combinou histórias dos lugares e informações organizadas em quatro pilares: Corporativo, Legislativo e Judiciário; Comércio, restaurantes e lojas; Cultura e lazer; Transporte: metrô, VLT e aeroporto.</p>
+                        <p class="project-tags">Mais de 1.000 participantes · Conteúdo para o setor imobiliário</p>
+                    </div>
+                </article>
+
+                <article class="project-case">
+                    <img src="slides/images/03-arco-do-teles.jpg" alt="Arco do Teles no Centro Histórico" class="project-case-image" loading="lazy">
+                    <div class="project-case-body">
+                        <p class="project-client">Academia Brasileira de Letras</p>
+                        <h3>Machado de Assis pelas ruas do Rio</h3>
+                        <p class="project-meta">Encontro Literário · Festival Machado de Assis</p>
+                        <p>A Rioclássica integrou a programação de abertura do Festival Machado de Assis, projeto elaborado pela escritora Ana Maria Machado, imortal da ABL, em comemoração ao aniversário do autor. O festival aconteceu no Museu de Arte do Rio, o MAR.</p>
+                        <p>Planejada para 100 pessoas, a caminhada literária teve como fio condutor o conto <em>Noite de Almirante</em>, escolhido por sua relação com a região portuária. A experiência conectou a narrativa à região da Praça Mauá, do Valongo, da Saúde e da Prainha.</p>
+                        <p class="project-tags">Literatura e território · Abertura de festival · Roteiro temático</p>
+                    </div>
+                </article>
+
+                <article class="project-case">
+                    <img src="slides/images/14-oficina-criativa.jpg" alt="Oficina criativa Rioclássica" class="project-case-image" loading="lazy">
+                    <div class="project-case-body">
+                        <p class="project-client">Escola Eleva Urca</p>
+                        <h3>A literatura ganha as ruas</h3>
+                        <p class="project-meta">Encontro Literário · Library Week</p>
+                        <p>Durante a Library Week, programação anual da Escola Eleva, a Rioclássica realizou o Encontro Literário com turmas do Ensino Médio da unidade Urca. A partir de contos de Machado de Assis, os estudantes foram convidados a descobrir conexões entre a literatura e a cidade.</p>
+                        <p class="project-tags">Ensino Médio · Machado de Assis · Literatura e cidade</p>
+                    </div>
+                </article>
+
+                <article class="project-case">
+                    <img src="slides/images/02-tour-centro-historico.jpg" alt="Tour pelo Centro Histórico do Rio" class="project-case-image" loading="lazy">
+                    <div class="project-case-body">
+                        <p class="project-client">Colégio Monte Alto</p>
+                        <h3>Descobrir a história para conhecer a cidade</h3>
+                        <p class="project-meta">Tour pelo Rio Antigo · Ensino Fundamental</p>
+                        <p>A Rioclássica realizou um tour pelo Rio Antigo com turmas do 3º, 4º e 5º anos do Colégio Monte Alto. Em contato com os lugares e o patrimônio da cidade, as crianças puderam conhecer histórias do Rio em uma experiência para além da sala de aula.</p>
+                        <p class="project-tags">Ensino Fundamental · História do Rio · Experiência educativa</p>
+                    </div>
+                </article>
+
+                <article class="project-case">
+                    <img src="slides/images/08-grupo-tour-moda.jpg" alt="Grupo em tour de moda no Centro" class="project-case-image" loading="lazy">
+                    <div class="project-case-body">
+                        <p class="project-client">FGV</p>
+                        <h3>O poder do Rio: projetos que constroem o soft power da cidade</h3>
+                        <p class="project-meta">Palestra · Economia Criativa</p>
+                        <p>A convite da professora da disciplina de Economia Criativa da FGV, Fernanda Duarte apresentou a trajetória da Rioclássica como exemplo de empreendimento que transforma o patrimônio cultural carioca em experiências turísticas. A palestra abordou as ideias que deram origem aos roteiros, o processo de pesquisa e criação e a adesão do público às propostas.</p>
+                        <p class="project-tags">Economia criativa · Empreendedorismo · Turismo cultural</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUEM ESTÁ À FRENTE -->
+    <section class="founder" id="fundadora">
+        <div class="section-container">
+            <div class="founder-grid">
+                <div class="founder-image">
+                    <img src="assets/image/fernanda-duarte.jpg" alt="Fernanda Duarte, fundadora e diretora da Rioclássica" class="founder-image-img" loading="lazy">
+                </div>
+                <div class="founder-content">
+                    <h2 class="section-title" data-i18n="founder.title">Quem está à frente da Rioclássica</h2>
+                    <p class="founder-name">Fernanda Duarte</p>
+                    <p class="section-subtitle founder-role" data-i18n="founder.role">Fundadora e diretora</p>
+                    <p class="about-text" data-i18n="founder.text1">
+                        Empresária à frente da Rioclássica, guia de turismo e pesquisadora do Rio Antigo, Fernanda Duarte dedica seu trabalho a criar novas formas de conhecer e vivenciar a cidade.
+                    </p>
+                    <p class="about-text" data-i18n="founder.text2">
+                        Sua atuação reúne pesquisa histórica, literatura, patrimônio e criação de experiências, com atenção às histórias que dão sentido aos lugares. É colunista do Diário do Rio, onde assina “Aconteceu no Rio Antigo”, e leva sua experiência a palestras, encontros e projetos culturais.
+                    </p>
+                    <p class="about-text" data-i18n="founder.text3">
+                        Na Rioclássica, dirige a criação de roteiros e o desenvolvimento de propostas para diferentes públicos e instituições.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOSSO PROCESSO -->
+    <section class="process" id="processo">
+        <div class="section-container">
+            <h2 class="section-title" data-i18n="process.title">Nosso processo</h2>
+            <p class="section-subtitle" data-i18n="process.subtitle">Cada experiência começa com uma boa conexão entre você (ou sua organização), o perfil do público e as histórias da cidade.</p>
+
+            <div class="section-photo-strip section-photo-strip--process" aria-hidden="true">
+                <img src="slides/images/05-parque-guinle-tour.jpg" alt="" class="section-photo" loading="lazy">
+                <img src="slides/images/13-igreja-historica.jpg" alt="" class="section-photo" loading="lazy">
+                <img src="slides/images/09-oficina-leques.jpg" alt="" class="section-photo" loading="lazy">
+            </div>
+
+            <ol class="process-steps">
+                <li>
+                    <span class="process-num">1</span>
+                    <div>
+                        <h3 data-i18n="process.p1.title">Entender</h3>
+                        <p data-i18n="process.p1.text">Conhecemos os objetivos, o público e o contexto da ação.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="process-num">2</span>
+                    <div>
+                        <h3 data-i18n="process.p2.title">Criar</h3>
+                        <p data-i18n="process.p2.text">Selecionamos temas, lugares e narrativas para desenvolver a proposta.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="process-num">3</span>
+                    <div>
+                        <h3 data-i18n="process.p3.title">Planejar</h3>
+                        <p data-i18n="process.p3.text">Definimos o formato, a duração, o percurso e os recursos necessários.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="process-num">4</span>
+                    <div>
+                        <h3 data-i18n="process.p4.title">Realizar</h3>
+                        <p data-i18n="process.p4.text">Conduzimos a experiência com atenção ao conteúdo, à organização e aos participantes.</p>
+                    </div>
+                </li>
+            </ol>
+
+            <div class="universes">
+                <h3 data-i18n="universes.title">Universos que exploramos</h3>
+                <p data-i18n="universes.text">Literatura e Machado de Assis · História da moda · Igrejas históricas e música sacra · Confeitarias e gastronomia · Patrimônio e memória do Rio</p>
+                <p class="universes-note" data-i18n="universes.note">Os temas e formatos podem ser combinados em propostas desenvolvidas para cada projeto.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- APOIO / PARCEIROS -->
+    <section class="partners" id="parceiros">
+        <div class="section-container">
+            <h2 class="section-title" data-i18n="partners.title">Apoio</h2>
+            <p class="section-subtitle" data-i18n="partners.subtitle">Instituições e marcas que caminham conosco</p>
+            <ul class="partners-grid">
+                <li class="partner-item">
+                    <img src="assets/image/parceiros/belmonte.png" alt="Boteco Belmonte" class="partner-logo-img" loading="lazy">
+                </li>
+                <li class="partner-item">
+                    <img src="assets/image/parceiros/diario-do-rio.png" alt="Diário do Rio" class="partner-logo-img" loading="lazy">
+                </li>
+                <li class="partner-item">
+                    <img src="assets/image/parceiros/polo-confeitarias.png" alt="Pólo Confeitarias Tradicionais" class="partner-logo-img" loading="lazy">
+                </li>
+                <li class="partner-item">
+                    <img src="assets/image/parceiros/rio-capital-livro.png" alt="Rio Capital Mundial do Livro 2025" class="partner-logo-img" loading="lazy">
+                </li>
+                <li class="partner-item">
+                    <img src="assets/image/parceiros/prefeitura-cultura.png" alt="Prefeitura do Rio · Cultura" class="partner-logo-img" loading="lazy">
+                </li>
+                <li class="partner-item">
+                    <img src="assets/image/parceiros/conselho-moda.png" alt="Conselho de Moda Municipal" class="partner-logo-img" loading="lazy">
+                </li>
+                <li class="partner-item">
+                    <img src="assets/image/parceiros/marinha.png" alt="Marinha do Brasil" class="partner-logo-img" loading="lazy">
+                </li>
+                <li class="partner-item">
+                    <img src="assets/image/parceiros/dphdm.png" alt="DPHDM" class="partner-logo-img" loading="lazy">
+                </li>
+                <li class="partner-item">
+                    <img src="assets/image/parceiros/arqrio.png" alt="ArqRio" class="partner-logo-img" loading="lazy">
+                </li>
+                <li class="partner-item">
+                    <img src="assets/image/parceiros/cau-rj.png" alt="CAU/RJ" class="partner-logo-img" loading="lazy">
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- GALERIA DE FOTOS -->
+    <section class="gallery-section" id="galeria">
+        <div class="section-container">
+            <h2 class="section-title" id="gallery-title" data-i18n="gallery.title">Galeria dos nossos flâneurs</h2>
+            <p class="section-subtitle" id="gallery-subtitle" data-i18n="gallery.subtitle">Registros dos nossos flâneurs desvendando a alma do Rio</p>
+            
+            <div class="gallery-wrapper">
+                <div class="gallery-display">
+                    <div class="gallery-item fade" id="gallery-1">
+                        <img src="slides/images/11-experiencia-em-grupo.jpg" alt="Experiência em grupo sob as árvores" class="gallery-image">
+                        <div class="gallery-caption-block">
+                            <div class="gallery-caption">Experiência em grupo</div>
+                            <p class="gallery-credit">Foto: <a href="https://www.instagram.com/marcellenehmefotos" target="_blank" rel="noopener noreferrer">Marcelle Nehme</a></p>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade" id="gallery-2">
+                        <img src="slides/images/01-colombo-fachada.jpg" alt="Fachada da Confeitaria Colombo" class="gallery-image">
+                        <div class="gallery-caption-block">
+                            <div class="gallery-caption">Confeitaria Colombo</div>
+                            <p class="gallery-credit">Tour das Confeitarias</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade" id="gallery-3">
+                        <img src="slides/images/10-caminhada-cultural.jpg" alt="Caminhada cultural com a Rioclássica" class="gallery-image">
+                        <div class="gallery-caption-block">
+                            <div class="gallery-caption">Caminhada cultural</div>
+                            <p class="gallery-credit">Foto: <a href="https://www.instagram.com/marcellenehmefotos" target="_blank" rel="noopener noreferrer">Marcelle Nehme</a></p>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade" id="gallery-4">
+                        <img src="slides/images/12-patrimonio-arquitetonico.jpg" alt="Patrimônio arquitetônico do Rio" class="gallery-image">
+                        <div class="gallery-caption-block">
+                            <div class="gallery-caption">Patrimônio arquitetônico</div>
+                            <p class="gallery-credit">Foto: <a href="https://www.instagram.com/marcellenehmefotos" target="_blank" rel="noopener noreferrer">Marcelle Nehme</a></p>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade" id="gallery-5">
+                        <img src="slides/images/07-guia-parque-guinle.jpg" alt="Fernanda Duarte conduzindo tour no Parque Guinle" class="gallery-image">
+                        <div class="gallery-caption-block">
+                            <div class="gallery-caption">Curadoria em movimento</div>
+                            <p class="gallery-credit">Foto: <a href="https://www.instagram.com/marcellenehmefotos" target="_blank" rel="noopener noreferrer">Marcelle Nehme</a></p>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade" id="gallery-6">
+                        <img src="slides/images/02-tour-centro-historico.jpg" alt="Tour guiado no Centro Histórico do Rio" class="gallery-image">
+                        <div class="gallery-caption-block">
+                            <div class="gallery-caption">Centro Histórico</div>
+                            <p class="gallery-credit">Tour das Confeitarias</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade" id="gallery-7">
+                        <img src="slides/images/08-grupo-tour-moda.jpg" alt="Grupo do Tour da Moda e Leques" class="gallery-image">
+                        <div class="gallery-caption-block">
+                            <div class="gallery-caption">Tour da Moda</div>
+                            <p class="gallery-credit">História da moda e leques</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade" id="gallery-8">
+                        <img src="slides/images/13-igreja-historica.jpg" alt="Visita a igreja histórica" class="gallery-image">
+                        <div class="gallery-caption-block">
+                            <div class="gallery-caption">Igrejas históricas</div>
+                            <p class="gallery-credit">Foto: <a href="https://www.instagram.com/marcellenehmefotos" target="_blank" rel="noopener noreferrer">Marcelle Nehme</a></p>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade" id="gallery-9">
+                        <img src="slides/images/06-arquitetura-moderna.jpg" alt="Arquitetura moderna no Parque Guinle" class="gallery-image">
+                        <div class="gallery-caption-block">
+                            <div class="gallery-caption">Arquitetura e cidade</div>
+                            <p class="gallery-credit">Foto: <a href="https://www.instagram.com/marcellenehmefotos" target="_blank" rel="noopener noreferrer">Marcelle Nehme</a></p>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade" id="gallery-10">
+                        <img src="slides/images/14-oficina-criativa.jpg" alt="Oficina criativa Rioclássica" class="gallery-image">
+                        <div class="gallery-caption-block">
+                            <div class="gallery-caption">Oficina criativa</div>
+                            <p class="gallery-credit">Foto: <a href="https://www.instagram.com/marcellenehmefotos" target="_blank" rel="noopener noreferrer">Marcelle Nehme</a></p>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade" id="gallery-11">
+                        <img src="slides/images/04-press-tour-disney.jpg" alt="Press tour Disney+ com a Rioclássica" class="gallery-image">
+                        <div class="gallery-caption-block">
+                            <div class="gallery-caption">Press tour Disney+</div>
+                            <p class="gallery-credit">Foto: <a href="https://www.instagram.com/marcellenehmefotos" target="_blank" rel="noopener noreferrer">Marcelle Nehme</a></p>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade" id="gallery-12">
+                        <img src="slides/images/09-oficina-leques.jpg" alt="Oficina criativa de leques" class="gallery-image">
+                        <div class="gallery-caption-block">
+                            <div class="gallery-caption">Oficina de leques</div>
+                            <p class="gallery-credit">Tour da Moda</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade" id="gallery-13">
+                        <img src="slides/images/03-arco-do-teles.jpg" alt="Grupo no Arco do Teles" class="gallery-image">
+                        <div class="gallery-caption-block">
+                            <div class="gallery-caption">Arco do Teles</div>
+                            <p class="gallery-credit">Tour das Confeitarias</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade" id="gallery-14">
+                        <img src="slides/images/05-parque-guinle-tour.jpg" alt="Tour no Parque Guinle" class="gallery-image">
+                        <div class="gallery-caption-block">
+                            <div class="gallery-caption">Parque Guinle</div>
+                            <p class="gallery-credit">Foto: <a href="https://www.instagram.com/marcellenehmefotos" target="_blank" rel="noopener noreferrer">Marcelle Nehme</a> · Disney+</p>
+                        </div>
+                    </div>
+
+                    <!-- Controles de navegação -->
+                    <button class="gallery-control gallery-control-prev" onclick="galleryPrev()" aria-label="Foto anterior">&#10094;</button>
+                    <button class="gallery-control gallery-control-next" onclick="galleryNext()" aria-label="Próxima foto">&#10095;</button>
+                </div>
+
+                <!-- Indicadores de slides -->
+                <div class="gallery-indicators">
+                    <button class="indicator active" onclick="galleryGoTo(1)" aria-label="Ir para foto 1"></button>
+                    <button class="indicator" onclick="galleryGoTo(2)" aria-label="Ir para foto 2"></button>
+                    <button class="indicator" onclick="galleryGoTo(3)" aria-label="Ir para foto 3"></button>
+                    <button class="indicator" onclick="galleryGoTo(4)" aria-label="Ir para foto 4"></button>
+                    <button class="indicator" onclick="galleryGoTo(5)" aria-label="Ir para foto 5"></button>
+                    <button class="indicator" onclick="galleryGoTo(6)" aria-label="Ir para foto 6"></button>
+                    <button class="indicator" onclick="galleryGoTo(7)" aria-label="Ir para foto 7"></button>
+                    <button class="indicator" onclick="galleryGoTo(8)" aria-label="Ir para foto 8"></button>
+                    <button class="indicator" onclick="galleryGoTo(9)" aria-label="Ir para foto 9"></button>
+                    <button class="indicator" onclick="galleryGoTo(10)" aria-label="Ir para foto 10"></button>
+                    <button class="indicator" onclick="galleryGoTo(11)" aria-label="Ir para foto 11"></button>
+                    <button class="indicator" onclick="galleryGoTo(12)" aria-label="Ir para foto 12"></button>
+                    <button class="indicator" onclick="galleryGoTo(13)" aria-label="Ir para foto 13"></button>
+                    <button class="indicator" onclick="galleryGoTo(14)" aria-label="Ir para foto 14"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRILHA SONORA -->
+    <section class="playlist-section" id="trilha-sonora">
+        <div class="section-container">
+            <h2 class="section-title" data-i18n="playlist.title">Trilha Sonora</h2>
+            <p class="section-subtitle" data-i18n="playlist.subtitle">Ouça a playlist que acompanha a experiência Rioclássica</p>
+            <div class="playlist-embed-wrapper">
+                <div class="playlist-card-top">
+                    <p class="playlist-card-eyebrow">Spotify</p>
+                    <h3 class="playlist-card-name">Rioclássica</h3>
+                    <p class="playlist-card-meta" data-i18n="playlist.by">Curadoria de Fernanda Duarte</p>
+                    <a
+                        href="https://open.spotify.com/playlist/33GaKIjuHZ6jIhjljfskKY"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-outline playlist-card-link"
+                        data-i18n="playlist.open"
+                    >Abrir no Spotify</a>
+                </div>
+                <div id="spotify-playlist-host" class="playlist-embed-host" title="Playlist Spotify · Rioclássica"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="contact" id="contato">
+        <div class="section-container">
+            <h2 class="section-title" id="contact-title" data-i18n="contact.title">Qual história vamos viver juntos?</h2>
+            <p class="section-subtitle" id="contact-subtitle" data-i18n="contact.subtitle">Pronto para se tornar um flâneur? Escolha um roteiro de sábado ou personalize sua imersão privativa.</p>
+
+            <figure class="contact-visual">
+                <img src="slides/images/06-arquitetura-moderna.jpg" alt="Arquitetura do Centro do Rio" class="contact-visual-img" loading="lazy">
+            </figure>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <h4>WhatsApp</h4>
+                    <a href="https://wa.me/21990234090?text=Ol%C3%A1%20Riocl%C3%A1ssica!%20Gostaria%20de%20saber%20mais%20sobre%20os%20roteiros%20e%20me%20tornar%20um%20fl%C3%A2neur." target="_blank" rel="noopener noreferrer" class="btn btn-secondary" id="whatsapp-text" data-i18n="contact.whatsapp">
+                        Conversar no WhatsApp
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <h4>Instagram</h4>
+                    <a href="https://instagram.com/rioclassica" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" id="instagram-text">
+                        @rioclassica
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <h4>Email</h4>
+                    <a href="mailto:rioclassica@gmail.com" class="btn btn-secondary" id="email-text">
+                        rioclassica@gmail.com
+                    </a>
+                </div>
+            </div>
+            <p class="contact-founder-note" data-i18n="contact.founder">Fernanda Duarte · Fundadora e diretora</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="section-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 id="footer-company" data-i18n="footer.company">Rioclássica · Turismo e Cultura</h4>
+                    <p id="footer-desc" data-i18n="footer.desc">Mais que turismo, experiências de vida.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 id="footer-nav" data-i18n="footer.nav">Navegação</h4>
+                    <ul>
+                        <li><a href="#quem-somos" id="footer-about" data-i18n="footer.about">Quem Somos</a></li>
+                        <li><a href="#flaneur" data-i18n="footer.flaneur">Flâneur</a></li>
+                        <li><a href="#projetos" data-i18n="footer.projects">Projetos</a></li>
+                        <li><a href="#sabados" id="footer-saturdays" data-i18n="footer.saturdays">Sábados</a></li>
+                        <li><a href="/blog.html">Blog</a></li>
+                        <li><a href="#roteiros" id="footer-roteiros" data-i18n="footer.roteiros">Roteiros</a></li>
+                        <li><a href="#contato" id="footer-contact" data-i18n="footer.contact">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 id="footer-social" data-i18n="footer.social">Redes Sociais</h4>
+                    <p>
+                        <a href="https://instagram.com/rioclassica" target="_blank">Instagram</a> |
+                        <a href="https://wa.me/21990234090" target="_blank">WhatsApp</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p id="footer-copyright" data-i18n="footer.copyright">&copy; 2026 Rioclássica. Todos os direitos reservados.</p>
+                <p class="footer-legal">
+                    CNPJ: 53.805.687/0001-0 | Cadastur: [INSERIR CADASTUR] | 
+                    <a href="#">Política de Privacidade</a>
+                </p>
+                <p class="footer-credit">
+                    Criado por <strong>Eduardo Serafim</strong> - <a href="https://instagram.com/efserafim" target="_blank">instagram.com/efserafim</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal: detalhes da Experiência de Sábado -->
+    <div class="roteiro-modal" id="saturday-detail-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="saturday-modal-title">
+        <div class="roteiro-modal-backdrop" data-saturday-modal-close></div>
+        <div class="roteiro-modal-panel">
+            <button type="button" class="roteiro-modal-close" data-saturday-modal-close aria-label="Fechar">×</button>
+            <img class="roteiro-modal-image" id="saturday-modal-image" alt="" hidden>
+            <span class="badge roteiro-modal-badge" id="saturday-modal-badge"></span>
+            <h3 class="roteiro-modal-title" id="saturday-modal-title"></h3>
+            <div class="roteiro-modal-meta" id="saturday-modal-meta"></div>
+            <div class="roteiro-modal-description" id="saturday-modal-description"></div>
+            <p class="saturday-modal-note" id="saturday-modal-note"></p>
+            <a href="#" class="btn btn-secondary btn-large" id="saturday-modal-cta" target="_blank" rel="noopener noreferrer" data-i18n="ui.reserveNow">Reservar agora</a>
+        </div>
+    </div>
+
+    <!-- Modal: detalhes do roteiro -->
+    <div class="roteiro-modal" id="roteiro-detail-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="roteiro-modal-title">
+        <div class="roteiro-modal-backdrop" data-roteiro-modal-close></div>
+        <div class="roteiro-modal-panel">
+            <button type="button" class="roteiro-modal-close" data-roteiro-modal-close aria-label="Fechar">×</button>
+            <img class="roteiro-modal-image" id="roteiro-modal-image" alt="" hidden>
+            <p class="roteiro-modal-subtitle" id="roteiro-modal-subtitle"></p>
+            <h3 class="roteiro-modal-title" id="roteiro-modal-title"></h3>
+            <div class="roteiro-modal-meta" id="roteiro-modal-meta"></div>
+            <div class="roteiro-modal-description" id="roteiro-modal-description"></div>
+            <a href="#" class="btn btn-accent btn-large" id="roteiro-modal-reserve" target="_blank" rel="noopener noreferrer" data-i18n="ui.reserveNow">Reservar agora</a>
+        </div>
+    </div>
+
+    <!-- WHATSAPP FLUTUANTE -->
+    <a href="https://wa.me/21990234090?text=Ol%C3%A1%20Riocl%C3%A1ssica!%20Gostaria%20de%20saber%20mais%20sobre%20os%20roteiros%20e%20me%20tornar%20um%20fl%C3%A2neur." target="_blank" class="whatsapp-float" id="whatsapp-float" title="Conversar no WhatsApp">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.383 0 0 5.383 0 12c0 2.182.613 4.225 1.691 5.976L.052 24l6.305-1.626A11.976 11.976 0 0 0 12 24c6.617 0 12-5.383 12-12S18.617 0 12 0zm0 21.974c-1.933 0-3.782-.513-5.396-1.436l-.388-.21-4.01 1.035 1.055-3.843-.226-.356A9.972 9.972 0 0 1 2.026 12c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm5.47-7.39c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.21 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35z"/>
+        </svg>
+    </a>
+
+    <!-- Supabase (dados do site) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.8/dist/umd/supabase.min.js"></script>
+    <script src="js/config/supabase-config.js"></script>
+    <script src="js/core/mappers.js"></script>
+    <script src="js/core/supabase-errors.js"></script>
+    <script src="js/core/supabase-client.js?v=3"></script>
+    <script src="js/services/sabados-service.js"></script>
+    <script src="js/services/roteiros-service.js"></script>
+    <script src="js/i18n.js?v=12"></script>
+    <script src="js/site-content.js?v=7"></script>
+    <script src="js/script.js?v=9"></script>
+</body>
+</html>
