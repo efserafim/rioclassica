@@ -8,6 +8,8 @@ let currentPage = 1;
 let searchQuery = '';
 let blogScrollLockY = 0;
 let blogModalHistoryActive = false;
+let currentOpenPostId = null;
+let blogToastTimer = null;
 
 function lockPageScroll() {
   blogScrollLockY = window.scrollY || document.documentElement.scrollTop || 0;
@@ -61,6 +63,68 @@ function formatPostDate(value) {
   } catch {
     return '';
   }
+}
+
+function formatPostAuthor(author) {
+  const value = String(author || '').trim();
+  if (!value) return 'Rioclássica';
+  if (/chatgpt|openai|ia|ai/i.test(value)) return 'Rioclássica';
+  return value;
+}
+
+function estimateReadingMinutes(post) {
+  const words = getPlainText(post.content).split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(words / 190));
+}
+
+function showBlogToast(message) {
+  const toast = document.getElementById('blogToast');
+  if (!toast) return;
+  toast.textContent = message;
+  toast.hidden = false;
+  toast.classList.add('is-visible');
+  clearTimeout(blogToastTimer);
+  blogToastTimer = setTimeout(() => {
+    toast.classList.remove('is-visible');
+    toast.hidden = true;
+  }, 2200);
+}
+
+function getAdjacentPosts(postId) {
+  const list = filteredBlogPosts.length ? filteredBlogPosts : allBlogPosts;
+  const index = list.findIndex((p) => p.id === postId);
+  if (index < 0) return { prev: null, next: null };
+  return {
+    prev: index > 0 ? list[index - 1] : null,
+    next: index < list.length - 1 ? list[index + 1] : null
+  };
+}
+
+function updateReadingProgress() {
+  const content = document.getElementById('blogModalContent');
+  const bar = document.getElementById('blogReadProgress');
+  if (!content || !bar) return;
+  const max = content.scrollHeight - content.clientHeight;
+  const value = max > 0 ? (content.scrollTop / max) * 100 : 0;
+  bar.style.width = `${Math.min(100, Math.max(0, value))}%`;
+}
+
+async function copyBlogPostLink(postId) {
+  const url = `${window.location.origin}${window.location.pathname}?post=${encodeURIComponent(postId)}`;
+  try {
+    await navigator.clipboard.writeText(url);
+    showBlogToast('Link do artigo copiado');
+  } catch {
+    showBlogToast('Não foi possível copiar o link');
+  }
+}
+
+function togglePostImageZoom(button) {
+  const media = button?.closest('.post-detail-media');
+  if (!media) return;
+  const expanded = media.classList.toggle('is-zoomed');
+  button.setAttribute('aria-pressed', expanded ? 'true' : 'false');
+  button.setAttribute('aria-label', expanded ? 'Reduzir imagem' : 'Ampliar imagem');
 }
 
 function normalizeSearch(value) {
@@ -342,7 +406,8 @@ function renderBlogGrid(posts) {
     .join('');
 }
 
-function openBlogPost(postId) {
+function openBlogPost(postId, options = {}) {
+  const { skipHistory = false } = options;
   const post = allBlogPosts.find((p) => p.id === postId);
   if (!post) return;
 
@@ -350,57 +415,117 @@ function openBlogPost(postId) {
   if (!detailContainer) return;
 
   const date = formatPostDate(post.created_at);
+  const author = formatPostAuthor(post.author);
+  const minutes = estimateReadingMinutes(post);
   const waText = encodeURIComponent(`Li no Blog Rioclássica: ${post.title}`);
+  const { prev, next } = getAdjacentPosts(post.id);
+  currentOpenPostId = post.id;
 
   detailContainer.innerHTML = `
-    <div class="post-detail-header">
+    <div class="post-detail-header${post.featured_image_url ? ' has-image' : ''}">
       ${
         post.featured_image_url
-          ? `<img src="${escapeHtml(post.featured_image_url)}" alt="${escapeHtml(
-              post.featured_image_alt || post.title
-            )}" class="post-detail-image">`
+          ? `<figure class="post-detail-media">
+              <button type="button" class="post-detail-image-btn" onclick="togglePostImageZoom(this)" aria-label="Ampliar imagem" aria-pressed="false">
+                <img src="${escapeHtml(post.featured_image_url)}" alt="${escapeHtml(
+                  post.featured_image_alt || post.title
+                )}" class="post-detail-image">
+                <span class="post-detail-image-hint">Toque para ampliar</span>
+              </button>
+            </figure>`
           : ''
       }
       <div class="post-detail-header-content">
+        <p class="post-detail-kicker">Blog Rioclássica</p>
+        <h1 id="postModalTitle">${escapeHtml(post.title)}</h1>
         <div class="post-detail-meta">
           <time datetime="${post.created_at}">${date}</time>
-          ${post.author ? `<span>Por ${escapeHtml(post.author)}</span>` : ''}
+          <span class="post-detail-meta-sep" aria-hidden="true">·</span>
+          <span>${escapeHtml(author)}</span>
+          <span class="post-detail-meta-sep" aria-hidden="true">·</span>
+          <span>${minutes} min de leitura</span>
         </div>
-        <h1 id="postModalTitle">${escapeHtml(post.title)}</h1>
+        <div class="post-detail-share" role="group" aria-label="Compartilhar artigo">
+          <button type="button" class="post-share-btn" onclick="copyBlogPostLink('${post.id}')">Copiar link</button>
+          <a class="post-share-btn post-share-btn--wa" href="https://wa.me/?text=${waText}%20${encodeURIComponent(
+            `${window.location.origin}${window.location.pathname}?post=${post.id}`
+          )}" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </div>
       </div>
     </div>
     <div class="post-detail-content">
       ${post.content || ''}
     </div>
+    <nav class="post-detail-nav" aria-label="Outros artigos">
+      ${
+        prev
+          ? `<button type="button" class="post-nav-card post-nav-card--prev" onclick="openBlogPost('${prev.id}')">
+              <span class="post-nav-label">Anterior</span>
+              <span class="post-nav-title">${escapeHtml(prev.title)}</span>
+            </button>`
+          : `<span class="post-nav-card post-nav-card--empty" aria-hidden="true"></span>`
+      }
+      ${
+        next
+          ? `<button type="button" class="post-nav-card post-nav-card--next" onclick="openBlogPost('${next.id}')">
+              <span class="post-nav-label">Próximo</span>
+              <span class="post-nav-title">${escapeHtml(next.title)}</span>
+            </button>`
+          : `<span class="post-nav-card post-nav-card--empty" aria-hidden="true"></span>`
+      }
+    </nav>
     <div class="post-detail-actions">
-      <button type="button" class="btn btn-outline" onclick="closeBlogModal()">Voltar aos artigos</button>
+      <button type="button" class="post-detail-back" onclick="closeBlogModal()">← Voltar aos artigos</button>
       <a class="btn btn-primary" href="https://wa.me/21990234090?text=${waText}" target="_blank" rel="noopener noreferrer">Conversar no WhatsApp</a>
     </div>
   `;
 
-  document.getElementById('postModal').classList.add('active');
+  const modal = document.getElementById('postModal');
+  modal?.classList.add('active');
+  modal?.classList.remove('is-closing');
   lockPageScroll();
 
-  if (!blogModalHistoryActive) {
-    history.pushState({ blogModal: true }, '');
+  if (!skipHistory && !blogModalHistoryActive) {
+    history.pushState({ blogModal: true, postId: post.id }, '', `?post=${encodeURIComponent(post.id)}`);
     blogModalHistoryActive = true;
+  } else if (!skipHistory && blogModalHistoryActive) {
+    history.replaceState({ blogModal: true, postId: post.id }, '', `?post=${encodeURIComponent(post.id)}`);
   }
 
-  const modalContent = document.querySelector('.blog-modal-content');
-  if (modalContent) modalContent.scrollTop = 0;
+  const modalContent = document.getElementById('blogModalContent');
+  if (modalContent) {
+    modalContent.scrollTop = 0;
+    updateReadingProgress();
+  }
+
+  requestAnimationFrame(() => {
+    detailContainer.classList.remove('is-ready');
+    void detailContainer.offsetWidth;
+    detailContainer.classList.add('is-ready');
+  });
 }
 
 function closeBlogModal(skipHistoryBack = false) {
   const modal = document.getElementById('postModal');
-  if (!modal?.classList.contains('active')) return;
+  if (!modal?.classList.contains('active') || modal.classList.contains('is-closing')) return;
 
-  modal.classList.remove('active');
-  unlockPageScroll();
+  modal.classList.add('is-closing');
+  currentOpenPostId = null;
+
+  window.setTimeout(() => {
+    modal.classList.remove('active', 'is-closing');
+    unlockPageScroll();
+    const bar = document.getElementById('blogReadProgress');
+    if (bar) bar.style.width = '0%';
+  }, 180);
 
   if (!blogModalHistoryActive) return;
 
   if (skipHistoryBack) {
     blogModalHistoryActive = false;
+    if (window.location.search.includes('post=')) {
+      history.replaceState({}, '', window.location.pathname);
+    }
     return;
   }
 
@@ -440,19 +565,44 @@ function setupBlogSearch() {
   });
 }
 
+function openPostFromQuery() {
+  const params = new URLSearchParams(window.location.search);
+  const postId = params.get('post');
+  if (!postId || !allBlogPosts.length) return;
+  openBlogPost(postId, { skipHistory: true });
+  blogModalHistoryActive = true;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   setupBlogSearch();
-  loadBlogPostsPublic();
+  loadBlogPostsPublic().then(() => {
+    openPostFromQuery();
+  });
 
   const postModal = document.getElementById('postModal');
+  const modalContent = document.getElementById('blogModalContent');
+
   postModal?.addEventListener('click', (e) => {
     if (e.target.id === 'postModal') closeBlogModal();
   });
 
+  modalContent?.addEventListener('scroll', () => {
+    updateReadingProgress();
+  }, { passive: true });
+
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && document.getElementById('postModal')?.classList.contains('active')) {
+    const modal = document.getElementById('postModal');
+    if (!modal?.classList.contains('active') || modal.classList.contains('is-closing')) return;
+
+    if (e.key === 'Escape') {
       closeBlogModal();
+      return;
     }
+
+    if (!currentOpenPostId) return;
+    const { prev, next } = getAdjacentPosts(currentOpenPostId);
+    if (e.key === 'ArrowLeft' && prev) openBlogPost(prev.id);
+    if (e.key === 'ArrowRight' && next) openBlogPost(next.id);
   });
 
   window.addEventListener('popstate', () => {
@@ -466,3 +616,5 @@ window.openBlogPost = openBlogPost;
 window.closeBlogModal = closeBlogModal;
 window.goToPage = goToPage;
 window.clearBlogSearch = clearBlogSearch;
+window.copyBlogPostLink = copyBlogPostLink;
+window.togglePostImageZoom = togglePostImageZoom;
