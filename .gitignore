@@ -5,7 +5,6 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Credenciais locais (nunca enviar ao GitHub)
-js/config/supabase-config.js
+# Segredos locais (nunca enviar service_role / .env)
 .env
 .env.*

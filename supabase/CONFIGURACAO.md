@@ -4,7 +4,9 @@ Tudo em um só lugar: **Supabase**. Firebase foi removido.
 
 ## 1. Projeto Supabase
 
-Copie `js/config/supabase-config.example.js` para `js/config/supabase-config.js` e cole a URL e a chave anon (Settings → API). Esse arquivo fica só na sua máquina e não entra no GitHub.
+URL e chave anon/publishable em `js/config/supabase-config.js` (Settings → API).
+Essa chave é pública no front-end; a proteção do banco é o RLS.
+Nunca use a chave `service_role` no site.
 
 ## 2. Banco de dados
 
